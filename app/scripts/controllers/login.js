@@ -60,7 +60,7 @@ angular.module('eventAppApp')
       return f + str.substr(1);
     }
 
-  
+
 
     function redirect() {
       $location.path('/account');
