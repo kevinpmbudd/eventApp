@@ -63,7 +63,7 @@ angular.module('eventAppApp')
 
 
     function redirect() {
-      $location.path('/account');
+      $location.path('/chat');
     }
 
     function showError(err) {
