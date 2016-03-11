@@ -48,11 +48,14 @@ body {
 }
 
 /* Main marketing message and sign up button */
-.jumbotron {
+.main-form {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-  background: url('http://openwalls.com/image/11539/yellow_flowers_field_1920x1200.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background: linear-gradient(#7FC8F5, #034079);
+  // background: url('http://openwalls.com/image/11539/yellow_flowers_field_1920x1200.jpg')
+  // background-repeat: no-repeat;
+  // background-position: center 0, left center;
+  // background-size: cover;
 
   .btn {
     font-size: 21px;
