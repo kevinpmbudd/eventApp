@@ -1,54 +1,25 @@
-<!-- <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
-
-<div class="row marketing">
-  <h4>Firebase</h4>
-  <p>
-    Firebase is a powerful API to store and sync data in realtime.
-  </p>
-
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div> -->
-
-<h2>Login Page</h2>
+<h2>Create new account</h2>
 <div class="main-form">
 <form role="form">
   <p class="form-group">
-    <label for="loginEmail">email</label>
-    <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control" />
+    <label for="accountName">name</label>
+    <input id="accountName" required name="name" type="name" ng-model="name" class="form-control" />
   </p>
   <p class="form-group">
-    <label for="loginPass">password</label>
-    <input id="loginPass" required name="pass" type="password" ng-model="pass" class="form-control" />
+    <label for="accountEmail">email</label>
+    <input id="accountEmail" required name="email" type="email" ng-model="email" class="form-control" />
   </p>
-  <p class="form-group" ng-cloak ng-show="createMode">
-    <label for="loginConfirm">confirm pass</label>
-    <input id="loginConfirm" required name="confirm" type="password" ng-model="confirm" class="form-control" />
+  <p class="form-group">
+    <label for="accountPass">password</label>
+    <input id="accountPass" required name="pass" type="password" ng-model="pass" class="form-control" />
+  </p>
+  <p class="form-group" ng-cloak>
+    <label for="accountConfirm">confirm pass</label>
+    <input id="accountConfirm" required name="confirm" type="password" ng-model="confirm" class="form-control" />
   </p>
 
   <p>
-    <button  class="btn btn-primary" ng-click="passwordLogin(email, pass)" ng-hide="createMode">Log In</button>
-    <button  class="btn btn-default" ng-click="createMode = true" ng-hide="createMode">Register</button>
-    <button  class="btn btn-primary" ng-cloak ng-show="createMode"
-            ng-click="createAccount(email, pass, confirm)">Create Account</button>
-    <button  class="btn btn-default" ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
+    <button  class="btn btn-primary" ng-cloak ng-click="createAccount(email, pass, confirm)">Join Us</button>
   </p>
 </form>
 </div>
