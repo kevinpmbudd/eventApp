@@ -42,7 +42,7 @@
                 <a ng-hide-auth="" href="#/login">log in</a>
                 <a ng-show-auth="" href="#/account">account</a>
               </li>
-              <form class="navbar-form navbar-right">
+              <form class="navbar-form navbar-right" ng-hide-auth>
                 <div class="form-group">
                   <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control" />
                 </div>
@@ -61,11 +61,13 @@
     <div class="container">
 
     <div ng-view=""></div>
+
     </div>
 
     <div class="footer">
       <div class="container">
         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team and Firebase</p>
+        <p ng-show-auth>hi user</p>
       </div>
     </div>
 
