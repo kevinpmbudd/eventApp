@@ -51,6 +51,11 @@
                 </div>
                 <button  class="btn btn-primary" ng-click="passwordLogin(email, pass)" ng-hide="createMode">Log In</button>
               </form>
+              <form class="navbar-form navbar-right" ng-show-auth>
+                <div class="form-group">
+                  <button  class="btn btn-primary" ng-click="logout()">Log Out</button>
+                </div>
+              </form>
             </ul>
           </div>
         </div>

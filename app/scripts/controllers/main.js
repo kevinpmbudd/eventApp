@@ -7,25 +7,8 @@
  * # MainCtrl
  * Controller of the eventAppApp
  */
-// angular.module('eventAppApp')
-//   .controller('MainCtrl', function ($scope) {
-//     $scope.awesomeThings = [
-//       'HTML5 Boilerplate',
-//       'AngularJS',
-//       'Karma'
-//     ];
-//   });
-
-
 angular.module('eventAppApp')
   .controller('MainCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
-    $scope.passwordLogin = function(email, pass) {
-      $scope.err = null;
-      Auth.$authWithPassword({email: email, password: pass}, {rememberMe: true}).then(
-        redirect, showError
-      );
-    };
-
     $scope.createAccount = function(email, pass, confirm) {
       $scope.err = null;
       if( !pass ) {

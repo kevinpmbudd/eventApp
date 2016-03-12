@@ -7,13 +7,15 @@
  * Manages authentication to any active providers.
  */
 angular.module('eventAppApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
+  .controller('LoginCtrl', function ($scope, Auth, Ref, $location) {
     $scope.passwordLogin = function(email, pass) {
       $scope.err = null;
       Auth.$authWithPassword({email: email, password: pass}, {rememberMe: true}).then(
         redirect, showError
       );
     };
+    $scope.logout = function() { Auth.$unauth(); };
+    // $scope.user = user;
 
     function redirect() {
       $location.path('/chat');
