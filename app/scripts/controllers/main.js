@@ -8,7 +8,7 @@
  * Controller of the eventAppApp
  */
 angular.module('eventAppApp')
-  .controller('MainCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
+  .controller('MainCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, $log) {
     $scope.createAccount = function(email, pass, confirm) {
       $scope.err = null;
       if( !pass ) {
@@ -28,8 +28,9 @@ angular.module('eventAppApp')
       }
 
       function createProfile(user) {
-        var ref = Ref.child('users', user.uid), def = $q.defer();
+        var ref = Ref.child('users/').child(user.uid), def = $q.defer();
         ref.set({email: email, name: firstPartOfEmail(email)}, function(err) {
+        // ref.set({email: email, name: name}, function(err) {
           $timeout(function() {
             if( err ) {
               def.reject(err);

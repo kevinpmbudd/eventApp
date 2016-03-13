@@ -42,19 +42,15 @@
                 <a ng-hide-auth="" href="#/login">log in</a>
                 <a ng-show-auth="" href="#/account">account</a>
               </li>
-              <form class="navbar-form navbar-right" ng-hide-auth>
-                <div class="form-group">
+              <form class="navbar-form navbar-right">
+                <div class="form-group" ng-hide-auth>
                   <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control" />
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-hide-auth>
                   <input id="loginPass" required name="pass" type="password" ng-model="pass" class="form-control" />
                 </div>
-                <button  class="btn btn-primary" ng-click="passwordLogin(email, pass)" ng-hide="createMode">Log In</button>
-              </form>
-              <form class="navbar-form navbar-right" ng-show-auth>
-                <div class="form-group">
-                  <button  class="btn btn-primary" ng-click="logout()">Log Out</button>
-                </div>
+                <button  class="btn btn-primary" ng-click="passwordLogin(email, pass)" ng-hide-auth>Log In</button>
+                <button  class="btn btn-primary" ng-click="logout()" ng-show-auth>Log Out</button>
               </form>
             </ul>
           </div>
@@ -117,7 +113,6 @@
         <script src="scripts/directives/ngShowAuth.js"></script>
         <script src="scripts/directives/ngHideAuth.js"></script>
         <script src="scripts/routes.js"></script>
-        <script src="scripts/directives/mynavbar.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -15,7 +15,6 @@ angular.module('eventAppApp')
       );
     };
     $scope.logout = function() { Auth.$unauth(); };
-    // $scope.user = user;
 
     function redirect() {
       $location.path('/chat');
