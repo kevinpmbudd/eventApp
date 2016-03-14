@@ -13,8 +13,8 @@
     </div>
     <div class="collapse navbar-collapse" id="js-navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a ng-href="#/chat">events</a></li>
-        <li><a ng-href="#/chat">new event</a></li>
+        <li><a ng-href="#/events">events</a></li>
+        <li><a ng-show-auth="" ng-href="#/newEvent">new event</a></li>
         <li><a ng-show-auth="" href="#/account">account</a></li>
       </ul>
       <form class="navbar-form navbar-right">
@@ -26,7 +26,7 @@
           <input id="loginPass" required name="pass" type="password" ng-model="pass" class="form-control pull-right" />
         </div>
         <button class="btn btn-primary" ng-click="passwordLogin(email, pass)" ng-hide-auth>Log In</button>
-        <p ng-show-auth style="color:white;display: inline;">Hi, {{ profile.name }}</p>
+        <p ng-show-auth style="color:white;display: inline;">Hi, {{ profile.name || " friend" }}</p>
         <button class="btn btn-primary" ng-click="logout()" ng-show-auth>Log Out</button>
       </form>
     </div>

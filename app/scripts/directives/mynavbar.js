@@ -34,7 +34,7 @@ function myNavbar() {
     }
 
     function redirect() {
-      $location.path('/chat');
+      $location.path('/events');
     }
 
     function showError(err) {

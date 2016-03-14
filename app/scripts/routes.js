@@ -78,6 +78,10 @@ angular.module('eventAppApp')
         templateUrl: 'views/events.html',
         controller: 'EventsCtrl'
       })
+      .whenAuthenticated('/newEvent', {
+        templateUrl: 'views/newevent.html',
+        controller: 'NeweventCtrl'
+      })
       .otherwise({redirectTo: '/'});
   }])
 
