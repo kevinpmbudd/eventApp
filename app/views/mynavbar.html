@@ -1,4 +1,4 @@
-<nav class="navbar navbar-static-top navbar-inverse" role="navigation" ng-cloak ng-controller="LoginCtrl">
+<nav class="navbar navbar-static-top navbar-inverse" role="navigation" ng-cloak>
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
@@ -26,6 +26,7 @@
           <input id="loginPass" required name="pass" type="password" ng-model="pass" class="form-control pull-right" />
         </div>
         <button class="btn btn-primary" ng-click="passwordLogin(email, pass)" ng-hide-auth>Log In</button>
+        <p ng-show-auth style="color:white;display: inline;">Hi</p>
         <button class="btn btn-primary" ng-click="logout()" ng-show-auth>Log Out</button>
       </form>
     </div>
