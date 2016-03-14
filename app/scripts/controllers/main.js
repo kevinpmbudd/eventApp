@@ -11,7 +11,13 @@ angular.module('eventAppApp')
   .controller('MainCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, $log) {
     $scope.createAccount = function(email, pass, confirm) {
       $scope.err = null;
-      if( !pass ) {
+      if( !$scope.name ) {
+        $scope.err = 'Please enter your name';
+      }
+      else if( !email ) {
+        $scope.err = 'Please enter your email';
+      }
+      else if( !pass ) {
         $scope.err = 'Please enter a password';
       }
       else if( pass !== confirm ) {
