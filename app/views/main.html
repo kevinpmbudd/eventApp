@@ -1,31 +1,18 @@
 <div class="row">
   <div class="col-md-6">Hello</div>
   <div class="col-md-6">
-    <h2 class="text-center">Create new account</h2>
-    <div class="main-form">
-    <form role="form">
-      <p class="form-group">
-        <label for="accountName">name</label>
-        <input id="accountName" required name="name" type="name" ng-model="name" class="form-control" />
-      </p>
-      <p class="form-group">
-        <label for="accountEmail">email</label>
-        <input id="accountEmail" required name="email" type="email" ng-model="email" class="form-control" />
-      </p>
-      <p class="form-group">
-        <label for="accountPass">password</label>
-        <input id="accountPass" required name="pass" type="password" ng-model="pass" class="form-control" />
-      </p>
-      <p class="form-group" ng-cloak>
-        <label for="accountConfirm">confirm pass</label>
-        <input id="accountConfirm" required name="confirm" type="password" ng-model="confirm" class="form-control" />
-      </p>
-
-      <p>
-        <button  class="btn btn-primary" ng-cloak ng-click="createAccount(email, pass, confirm)">Join Us</button>
-      </p>
+    <form class="form-signin">
+      <h2 class="form-signin-heading text-center">Create an account</h2>
+        <label for="accountName">Name</label>
+        <input type="text" id="accountName" class="form-control" placeholder="Name" required autocomplete="name" name="name" type="name" ng-model="name" autofocus>
+        <label for="accountEmail">Email address</label>
+        <input type="email" id="accountEmail" class="form-control" placeholder="Email address" required autocomplete="email" name="email" ng-model="email">
+        <label for="accountPass">Password</label>
+        <input type="password" id="accountPass" class="form-control" placeholder="Password" ng-model="pass" name="pass" required>
+        <label for="accountConfirm">Confirm Password</label>
+        <input type="password" id="accountConfirm" class="form-control" placeholder="Confirm Password" ng-model="confirm" name="confirm" required>
+        <button class="btn btn-lg btn-primary btn-block" ng-cloak ng-click="createAccount(email, pass, confirm)">Join Us</button>
     </form>
-    </div>
   </div>
 </div>
 <p ng-show="err" class="bg-danger">{{err}}</p>
