@@ -28,9 +28,11 @@ angular.module('eventAppApp')
       }
 
       function createProfile(user) {
-        var ref = Ref.child('users/').child(user.uid), def = $q.defer();
-        ref.set({email: email, name: firstPartOfEmail(email)}, function(err) {
-        // ref.set({email: email, name: name}, function(err) {
+        $log.log(user);
+        $log.log($scope);
+        var ref = Ref.child('users').child(user.uid), def = $q.defer();
+        // ref.set({email: email, name: firstPartOfEmail(email)}, function(err) {
+        ref.set({email: email, name: $scope.name}, function(err) {
           $timeout(function() {
             if( err ) {
               def.reject(err);
