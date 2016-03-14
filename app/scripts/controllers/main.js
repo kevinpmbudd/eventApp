@@ -35,9 +35,7 @@ angular.module('eventAppApp')
 
       function createProfile(user) {
         $log.log(user);
-        $log.log($scope);
         var ref = Ref.child('users').child(user.uid), def = $q.defer();
-        // ref.set({email: email, name: firstPartOfEmail(email)}, function(err) {
         ref.set({email: email, name: $scope.name}, function(err) {
           $timeout(function() {
             if( err ) {
@@ -51,10 +49,6 @@ angular.module('eventAppApp')
         return def.promise;
       }
     };
-
-    function firstPartOfEmail(email) {
-      return ucfirst(email.substr(0, email.indexOf('@'))||'');
-    }
 
     function ucfirst (str) {
       // inspired by: http://kevin.vanzonneveld.net

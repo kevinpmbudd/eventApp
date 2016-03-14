@@ -9,18 +9,18 @@
         <label for="accountName">Name</label>
         <input type="text" id="accountName" class="form-control" placeholder="Name" required autocomplete="name" name="name" type="name" ng-model="name" autofocus>
         <label for="accountEmail">Email address</label>
-        <input type="email" id="accountEmail" class="form-control" placeholder="Email address" required autocomplete="email" name="email" ng-model="email">
+        <input type="email" id="accountEmail" class="form-control" placeholder="Email address" required autocomplete="email" name="email" ng-model="accountEmail">
         <div class="row">
           <div class="col-xs-6">
             <label for="accountPass">Password</label>
-            <input type="password" id="accountPass" class="form-control" placeholder="Password" ng-model="pass" name="pass" required>
+            <input type="password" id="accountPass" class="form-control" placeholder="Password" ng-model="accountPass" name="pass" required>
           </div>
           <div class="col-xs-6">
             <label for="accountConfirm">Confirm Password</label>
-            <input type="password" id="accountConfirm" class="form-control" placeholder="Confirm Password" ng-model="confirm" name="confirm" required>
+            <input type="password" id="accountConfirm" class="form-control" placeholder="Confirm Password" ng-model="confirm" name="accountConfirm" required>
           </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" ng-cloak ng-click="createAccount(email, pass, confirm)">Join</button>
+        <button class="btn btn-lg btn-primary btn-block" ng-cloak ng-click="createAccount(accountEmail, accountPass, accountComfirm)">Join</button>
     </form>
   </div>
 </div>
