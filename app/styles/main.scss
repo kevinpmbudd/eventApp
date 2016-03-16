@@ -3,8 +3,26 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-body {
+html, body {
+  width: 100%;
+  width: 100%;
   padding: 0;
+}
+// div {
+//   background-color:rgba(255,0,0,0.5)
+// }
+.container {
+   background: rgba(192,192,192,0.0);
+}
+// .bg {
+//   height: 100%;
+//   width: 100%;
+//   background: url(/images/ocean-meets-the-sky.jpg) center center no-repeat;
+//   background-size: cover;
+// }
+body {
+  background: url(/images/ocean-meets-the-sky.jpg) no-repeat 50% 50% fixed;
+  background-size: cover;
 }
 /* Navbar */
 @media (min-width: 768px) and (max-width: 992px) {
@@ -16,7 +34,6 @@ body {
     }
 
 }
-
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -25,9 +42,9 @@ body {
   padding-right: 15px;
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
-}
+// .container-narrow > hr {
+//   margin: 30px 0;
+// }
 .big-logo {
   // min-height: 100%;
   min-height: 50vh;
@@ -113,6 +130,9 @@ footer p {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
+  ::-webkit-input-placeholder  {
+    font-size: .9em;
+   }
   .container {
     max-width: 900px;
   }
