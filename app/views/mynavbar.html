@@ -20,10 +20,10 @@
       <form class="navbar-form navbar-right">
         <div class="form-group" ng-hide-auth>
           <!-- <label for="loginEmail">Been here before?</label> -->
-          <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control pull-right" />
+          <input id="loginEmail" placeholder="email" required name="email" type="email" ng-model="email" class="form-control pull-right" />
         </div>
         <div class="form-group" ng-hide-auth>
-          <input id="loginPass" required name="pass" type="password" ng-model="pass" class="form-control pull-right" />
+          <input id="loginPass" placeholder="password" required name="pass" type="password" ng-model="pass" class="form-control pull-right" />
         </div>
         <button class="btn btn-primary" ng-click="passwordLogin(email, pass)" ng-hide-auth>Log In</button>
         <p ng-show-auth style="color:white;display: inline;">Hi, {{ profile.name || " friend" }}</p>
