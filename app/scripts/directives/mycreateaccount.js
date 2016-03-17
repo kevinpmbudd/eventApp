@@ -48,12 +48,12 @@ function myCreateAccount() {
 	      }
 	    };
 
-	    function redirect() {
-	      $location.path('/account');
-	    }
+    function redirect() {
+      $location.path('/account');
+    }
 
-	    function showError(err) {
-	      $scope.err = err;
-	    }
-	  }
+    function showError(err) {
+      $scope.err = err;
+    }
+	}
 }
