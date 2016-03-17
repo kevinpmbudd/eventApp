@@ -30,6 +30,9 @@ function myNavbar() {
     	Auth.$unauth();
     	$location.path('/events');
     };
+    $scope.$on('setName', function(event, name) {
+      $scope.profile = name;
+    })
 
     function setNavbarGreetingName(user) {
       $scope.profile = $firebaseObject(Ref.child('users').child(user.uid))

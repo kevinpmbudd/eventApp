@@ -20,24 +20,8 @@ function myCreateAccount() {
 	return directive;
 
 	function myCreateAccountCtrl($scope, Auth, $location, $q, Ref, $timeout, $log) {
-		$scope.createAccount = function(email, pass, confirm) {
+		$scope.createAccount = function(email, pass) {
 	      $scope.err = null;
-	      $log.log(email);
-	      $log.log(pass);
-	      $log.log(confirm);
-	      if( !$scope.name ) {
-	        $scope.err = 'Please enter your name';
-	      }
-	      else if( !email ) {
-	        $scope.err = 'Please enter your email';
-	      }
-	      else if( !pass ) {
-	        $scope.err = 'Please enter a password';
-	      }
-	      else if( pass !== confirm ) {
-	        $scope.err = 'Passwords do not match';
-	      }
-	      else {
 	        Auth.$createUser({email: email, password: pass})
 	          .then(function () {
 	            // authenticate so we have permission to write to Firebase
@@ -45,33 +29,24 @@ function myCreateAccount() {
 	          })
 	          .then(createProfile)
 	          .then(redirect, showError);
-	      }
 
 	      function createProfile(user) {
 	        $log.log(user);
 	        var ref = Ref.child('users').child(user.uid), def = $q.defer();
-	        ref.set({email: email, name: $scope.name}, function(err) {
+	        ref.set({email: email, fname: $scope.firstName, lname: $scope.lastName}, function(err) {
 	          $timeout(function() {
 	            if( err ) {
 	              def.reject(err);
 	            }
 	            else {
 	              def.resolve(ref);
+	              $scope.$emit('setName', $scope.firstName);
 	            }
 	          });
 	        });
 	        return def.promise;
 	      }
 	    };
-
-	    function ucfirst (str) {
-	      // inspired by: http://kevin.vanzonneveld.net
-	      str += '';
-	      var f = str.charAt(0).toUpperCase();
-	      return f + str.substr(1);
-	    }
-
-
 
 	    function redirect() {
 	      $location.path('/account');
