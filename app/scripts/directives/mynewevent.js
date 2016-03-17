@@ -19,13 +19,14 @@ function myNewEvent() {
 
   return directive;
 
-  function myNewEventCtrl($scope, Ref, $firebaseArray, $timeout) {
+  function myNewEventCtrl($scope, Ref, $firebaseArray, $timeout, $location) {
 
   	$scope.events = $firebaseArray(Ref.child('events'));
 
   	$scope.addEvent = function(name, host, location) {
   		if( name && host && location ) {
   			$scope.events.$add({name: name, host: host, location: location})
+        .then(redirect, showError)
   			.catch(alert);
   		}
   	};
@@ -35,6 +36,14 @@ function myNewEvent() {
       $timeout(function() {
         $scope.err = null;
       }, 5000);
+    }
+
+    function redirect() {
+      $location.path('/events');
+    }
+
+    function showError(err) {
+      $scope.err = err;
     }
   }
 }

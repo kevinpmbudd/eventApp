@@ -8,10 +8,6 @@
  * Controller of the eventAppApp
  */
 angular.module('eventAppApp')
-  .controller('EventsCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('EventsCtrl', function ($scope, Ref, $firebaseArray) {
+    $scope.events = $firebaseArray(Ref.child('events'));
   });

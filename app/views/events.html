@@ -1,1 +1,3 @@
-<p>This is the events view.</p>
+<ul id="events" ng-show="events.length">
+  <li ng-repeat="event in events">{{event.name}}</li>
+</ul>
