@@ -1,3 +1,10 @@
-<ul id="events" ng-show="events.length">
-  <li ng-repeat="event in events">{{event.name}}</li>
-</ul>
+<div class="row">
+	<!-- <ul id="events" ng-show="events.length">
+	  <li ng-repeat="event in events">{{event.name}}</li>
+	</ul> -->
+	<a class="col-xs-12 col-sm-6 col-md-3 well event-card" ng-repeat="event in events">
+		<h2 class="text-center">{{event.name}}</h2>
+		<h4>host: {{event.host}}</h4>
+		<h4>location: {{event.location}}</h4>
+	</a>
+</div>
