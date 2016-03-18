@@ -17,5 +17,6 @@ angular.module('eventAppApp', [
     'ngTouch',
     'firebase',
     'firebase.ref',
-    'firebase.auth'
+    'firebase.auth',
+    'uiGmapgoogle-maps'
   ]);

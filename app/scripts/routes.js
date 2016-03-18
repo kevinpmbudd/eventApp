@@ -85,6 +85,14 @@ angular.module('eventAppApp')
       .otherwise({redirectTo: '/'});
   }])
 
+  .config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+          key: 'AIzaSyC9a73erwpM4HAX7Jn-YnYlnGXB5WC3wXQ',
+          v: '3.20', //defaults to latest 3.X anyhow
+          libraries: 'weather,geometry,visualization'
+      });
+  })
+
   /**
    * Apply some route security. Any route's resolve method can reject the promise with
    * "AUTH_REQUIRED" to force a redirect. This method enforces that and also watches

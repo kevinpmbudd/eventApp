@@ -22,6 +22,7 @@ function myNewEvent() {
   function myNewEventCtrl($scope, Ref, $firebaseArray, $timeout, $location) {
 
   	$scope.events = $firebaseArray(Ref.child('events'));
+    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
   	$scope.addEvent = function(name, host, location) {
   		if( name && host && location ) {
