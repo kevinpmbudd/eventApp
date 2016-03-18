@@ -22,7 +22,17 @@ function myNewEvent() {
   function myNewEventCtrl($scope, Ref, $firebaseArray, $timeout, $location) {
 
   	$scope.events = $firebaseArray(Ref.child('events'));
-    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+
+    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 4 };
+    $scope.options = {scrollwheel: false};
+    var events = {
+      places_changed: function (searchBox) {}
+    }
+    $scope.searchbox = {
+      template:'searchbox.tpl.html',
+      events:events,
+      position: 'top-left'
+    };
 
   	$scope.addEvent = function(name, host, location) {
   		if( name && host && location ) {
