@@ -14,9 +14,9 @@ html, body {
 .container {
    background: rgba(0,0,0,0.0);
    margin-top: 50px;
-   @media (min-width: 768px) {
-    margin-top: 100px;
-  }
+  //  @media (min-width: 768px) {
+  //   margin-top: 100px;
+  // }
 }
 // .bg {
 //   height: 100%;
@@ -25,7 +25,7 @@ html, body {
 //   background-size: cover;
 // }
 body {
-  background: url(/images/meeting.png) no-repeat 50% 50% fixed;
+  background: url(/images/tc-horizon.png) no-repeat 50% 50% fixed;
   background-size: cover;
   // opacity: 0.3;
 }
