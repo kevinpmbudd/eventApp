@@ -18,7 +18,33 @@
 		<ui-gmap-search-box class="map-search-box" template="searchbox.template" events="searchbox.events" position="searchbox.position" ></ui-gmap-search-box>
 		<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
   </ui-gmap-google-map>
+  <!-- <div>
+      <ui-gmap-google-map
+              center="map.center"
+              zoom="map.zoom"
+              dragging="map.dragging"
+              bounds="map.bounds"
+              events="map.events"
+              options="map.options"
+              pan="true"
+              control="map.control"
+              >
 
+          <ui-gmap-search-box options="searchbox.options" template="searchbox.template"
+                          events="searchbox.events" position="searchbox.position"></ui-gmap-search-box>
+
+
+          <ui-gmap-markers idkey="map.idkey" models="map.markers" coords="'self'" icon="'icon'"
+                           click="'onClicked'"></ui-gmap-markers>
+          <ui-gmap-window show="window.show" coords="window.coords" idkey="window.place_id" templateurl="window.templateurl"
+                          templateparameter="window.templateparameter" options="window.options"
+                          closeClick='window.closeClick()' ng-cloak>
+
+          </ui-gmap-window>
+
+
+      </ui-gmap-google-map>
+  </div> -->
 
   <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid" ng-cloak ng-click="addEvent(eventName, eventHost, eventLocation)">Party On Wayne</button>
 </form>

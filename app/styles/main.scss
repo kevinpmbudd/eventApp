@@ -146,7 +146,11 @@ i {
 .map-search-box {
   margin: 10px 0;
   width: 200px;
-  height: 3em;
+  height: 2.7em;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  font-size: 11px;
+  padding: 8px;
 }
 
 // events page

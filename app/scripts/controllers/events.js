@@ -10,4 +10,10 @@
 angular.module('eventAppApp')
   .controller('EventsCtrl', function ($scope, Ref, $firebaseArray) {
     $scope.events = $firebaseArray(Ref.child('events'));
+
+    $scope.events.$loaded().then(function(events) {
+    	events.forEach(function(event) {
+    		console.log(event);
+    	});
+    });
   });

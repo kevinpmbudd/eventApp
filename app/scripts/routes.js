@@ -61,15 +61,6 @@ angular.module('eventAppApp')
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-
-      .when('/chat', {
-        templateUrl: 'views/chat.html',
-        controller: 'ChatCtrl'
-      })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
       .whenAuthenticated('/account', {
         templateUrl: 'views/account.html',
         controller: 'AccountCtrl'
@@ -77,6 +68,10 @@ angular.module('eventAppApp')
       .when('/events', {
         templateUrl: 'views/events.html',
         controller: 'EventsCtrl'
+      })
+      .when('/events/:id', {
+        templateUrl: 'views/events/event.html',
+        controller: 'EventCtrl'
       })
       .whenAuthenticated('/newEvent', {
         templateUrl: 'views/newevent.html',
@@ -99,8 +94,8 @@ angular.module('eventAppApp')
    * for changes in auth status which might require us to navigate away from a path
    * that we can no longer view.
    */
-  .run(['$rootScope', '$location', 'Auth', 'SECURED_ROUTES', 'loginRedirectPath',
-    function($rootScope, $location, Auth, SECURED_ROUTES, loginRedirectPath) {
+  .run(['$rootScope', '$location', 'Auth', 'SECURED_ROUTES', 'loginRedirectPath', '$templateCache',
+    function($rootScope, $location, Auth, SECURED_ROUTES, loginRedirectPath, $templateCache) {
       // watch for login status changes and redirect if appropriate
       Auth.$onAuth(check);
 
@@ -111,6 +106,8 @@ angular.module('eventAppApp')
           $location.path(loginRedirectPath);
         }
       });
+
+      $templateCache.put('window.tpl.html', '<div ng-controller="WindowCtrl" ng-init="showPlaceDetails(parameter)">{{place.name}}</div>');
 
       function check(user) {
         if( !user && authRequired($location.path()) ) {
