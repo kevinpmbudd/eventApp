@@ -4,19 +4,21 @@
   <h3>Profile</h3>
 
   <form role="form">
-    <p class="form-group">
-      <label>Name</label>
-      <br />{{profile.name}}
-    </p>
+    <div class="row">
+      <p class="col-xs-6 form-group">
+        <label>First Name:</label>
+        <input type="text" name="name" ng-model="profile.fname" class="form-control" />
+      </p>
+
+      <p class="col-xs-6 form-group">
+        <label>Last Name:</label>
+        <input type="text" name="name" ng-model="profile.lname" class="form-control" />
+      </p>
+    </div>
 
     <p class="form-group">
       <label>Account ID</label>
       <br />{{user.uid}}
-    </p>
-
-    <p class="form-group">
-      <label>Name:</label>
-      <input type="text" name="name" ng-model="profile.name" class="form-control" />
     </p>
 
     <p class="form-group">

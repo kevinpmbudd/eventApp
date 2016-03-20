@@ -172,17 +172,9 @@ function myNewEvent() {
   	$scope.addEvent = function(name, host, location) {
   		if( name && host && location ) {
   			$scope.events.$add({name: name, host: host, location: location})
-        .then(function(ref) {
-          var id = ref.key();
-          console.log(id);
-          console.log($scope.events.$indexFor(id));
-        })
         .then(redirect, showError)
   			.catch(alert);
   		}
-
-      console.log($scope.users);
-      console.log($scope.events);
   	};
 
   	function alert(msg) {
