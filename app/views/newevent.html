@@ -1,6 +1,37 @@
-<div class="row new-event">
-	<div class="col-md-8">
-		<my-new-event></my-new-event>
-	</div>
+<div class="row">
+  <div class="col-md-8">
+    <form novalidate name="form" class="form-new-event css-form">
+      <h2 class="form-signin-heading text-center">Who What Where When & Why</h2>
+      <p ng-show="err" class="bg-danger">{{err}}</p>
+      <label for="eventName">What is this event called?</label>
+      <input type="name" id="eventName" class="form-control" placeholder="event name" ng-model="eventName" name="eventName" required>
+      <label for="eventHost">Who's hosting this event?</label>
+      <input type="name" id="eventHost" class="form-control" placeholder="event host" ng-model="eventHost" name="eventHost" required>
+      <label for="eventGuestSearch">Who's attending this event?</label>
+      <div class="row">
+        <div class="col-xs-10" angucomplete-alt id="eventGuest" placeholder="Search for guests" pause="300" selected-object="selectedPerson" local-data="users" local-search="localSearch" title-field="fname,lname" minlength="1" input-class="form-control form-control-small" match-class="highlight">
+        </div>
+        <div class="col-xs-2">
+          <button class="btn btn-primary btn-lg btn-block" type="submit" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">Add</button>
+        </div>
+      </div>
 
+      <label for="eventLocation">Where is it happening?</label>
+      <input type="name" id="eventLocation" class="form-control" placeholder="event location" ng-model="eventLocation" name="eventLocation" required>
+      <script type="text/ng-template" id="searchbox.tpl.html">
+        <input type="text" class="map-search-box" placeholder="Search Box">
+      </script>
+      <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-search-box class="map-search-box" template="searchbox.template" events="searchbox.events" position="searchbox.position"></ui-gmap-search-box>
+        <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+      </ui-gmap-google-map>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid" ng-cloak ng-click="addEvent(eventName, eventHost, eventLocation)">Party On Wayne</button>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <p>guest list</p>
+    <ul ng-repeat="guest in guestList">
+      <li>{{guest.fname + " " + guest.lname}}</li>
+    </ul>
+  </div>
 </div>
