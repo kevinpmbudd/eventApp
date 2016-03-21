@@ -15,21 +15,20 @@
           <button class="btn btn-primary btn-lg btn-block" type="submit" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">Add</button>
         </div>
       </div>
-
       <label for="eventLocation">Where is it happening?</label>
-      <input type="name" id="eventLocation" class="form-control" placeholder="event location" ng-model="eventLocation" name="eventLocation" required>
+      <div id="eventLocation"></div>
+      <!-- <input type="name" id="eventLocation" class="form-control" placeholder="event location" ng-model="eventLocation" name="eventLocation" required> -->
       <script type="text/ng-template" id="searchbox.tpl.html">
         <input type="text" class="map-search-box" placeholder="Search Box">
       </script>
       <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-        <ui-gmap-search-box class="map-search-box" template="searchbox.template" events="searchbox.events" position="searchbox.position"></ui-gmap-search-box>
-        <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+        <ui-gmap-search-box options="searchbox.options" class="map-search-box" template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv"></ui-gmap-search-box>
       </ui-gmap-google-map>
       <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid" ng-cloak ng-click="addEvent(eventName, eventHost, eventLocation)">Party On Wayne</button>
     </form>
   </div>
   <div class="col-md-4">
-    <p>guest list</p>
+    <p ng-show="guestList.length !== 0">guest list</p>
     <ul ng-repeat="guest in guestList">
       <li>{{guest.fname + " " + guest.lname}}</li>
     </ul>
