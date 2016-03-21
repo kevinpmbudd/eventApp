@@ -12,6 +12,7 @@ angular.module('eventAppApp')
     $scope.events = $firebaseArray(Ref.child('events'));
     $scope.users = $firebaseArray(Ref.child('users'));
     $scope.guestList = [];
+    var location;
 
     // Autocomplete searchbox to add guests to guest list
     $scope.localSearch = function(str) {
@@ -81,15 +82,19 @@ angular.module('eventAppApp')
 			      longitude: place[0].geometry.location.lng()
 			    }
 			  };
+
+			  location = place[0];
+			  console.log(location);
 			}
 		};
 		//initialize map searchbox with options
 		$scope.searchbox = { template: 'searchbox.tpl.html', events: events, parentdiv: 'eventLocation' };
 
 		//add new event to firebase
-    $scope.addEvent = function(name, host, location) {
-      if (name && host && location) {
-        $scope.events.$add({ name: name, host: host, location: location, guests: $scope.guestList })
+    $scope.addEvent = function(name, host) {
+      if (name && host) {
+      	console.log(location);
+        $scope.events.$add({ name: name, host: host, location: location.formatted_address, guests: $scope.guestList })
           .then(redirect, showError)
           .catch(alert);
       }
