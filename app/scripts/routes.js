@@ -83,7 +83,7 @@ angular.module('eventAppApp')
   .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
           key: 'AIzaSyC9a73erwpM4HAX7Jn-YnYlnGXB5WC3wXQ',
-          v: '3.20', //defaults to latest 3.X anyhow
+          v: '3.23',
           libraries: 'places'
       });
   })

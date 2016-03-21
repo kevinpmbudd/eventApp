@@ -17,7 +17,6 @@
         <!-- <div class="col-xs-2">
           <button class="btn btn-primary btn-lg" type="submit" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">Add</button>
         </div> -->
-
       <label for="eventLocation">Where is it happening?</label>
       <div id="eventLocation"></div>
       <!-- <input type="name" id="eventLocation" class="form-control" placeholder="event location" ng-model="eventLocation" name="eventLocation" required> -->
@@ -28,16 +27,18 @@
       <ui-gmap-google-map
                 center="map.center"
                 zoom="map.zoom"
-                dragging="map.dragging"
-                bounds="map.bounds"
-                events="map.events"
-                options="map.options"
-                pan="true"
-                control="map.control">
-        <ui-gmap-search-box options="searchbox.options" class="map-search-box" template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv" ng-model="searchModel.searchTerm"></ui-gmap-search-box>
+                draggable="true">
+        <ui-gmap-search-box
+        				options="searchbox.options"
+        				class="map-search-box"
+        				template="searchbox.template"
+        				events="searchbox.events"
+        				parentdiv="searchbox.parentdiv">
+        </ui-gmap-search-box>
+        <ui-gmap-marker
+        				coords="marker.coords" options="marker.options" events="marker.events" idKey="marker.id">
+        </ui-gmap-marker>
       </ui-gmap-google-map>
-
-
 
       <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid" ng-cloak ng-click="addEvent(eventName, eventHost, eventLocation)">Party On Wayne</button>
     </form>
