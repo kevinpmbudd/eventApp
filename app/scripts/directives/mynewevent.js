@@ -24,8 +24,25 @@ function myNewEvent() {
 
   	$scope.events = $firebaseArray(Ref.child('events'));
     $scope.users = $firebaseArray(Ref.child('users'));
+    $scope.guestList = [];
 
+    $scope.localSearch = function(str) {
+      var matches = [];
+      $scope.users.forEach(function(person) {
+        var fullName = person.fname + ' ' + person.lname;
+        if ((person.fname.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0) ||
+            (person.lname.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0) ||
+            (fullName.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0)) {
+          matches.push(person);
+        }
+      });
+      return matches;
+    };
 
+    $scope.addGuest = function(guest) {
+      console.log(guest);
+      $scope.guestList.push(guest);
+    };
 
     // $scope.place = {};
     // $scope.showPlaceDetails = function(param) {
@@ -171,7 +188,7 @@ function myNewEvent() {
 
   	$scope.addEvent = function(name, host, location) {
   		if( name && host && location ) {
-  			$scope.events.$add({name: name, host: host, location: location})
+  			$scope.events.$add({name: name, host: host, location: location, guests: $scope.guestList})
         .then(redirect, showError)
   			.catch(alert);
   		}

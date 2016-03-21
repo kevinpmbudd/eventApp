@@ -8,6 +8,32 @@
   <label for="eventHost">Who's hosting this event?</label>
   <input type="name" id="eventHost" class="form-control" placeholder="event host" ng-model="eventHost" name="eventHost" required>
 
+  <label for="eventGuestSearch">Who's attending this event?</label>
+  <div class="row">
+    <div class="col-xs-10" angucomplete-alt id="eventGuest"
+                placeholder="Search for guests"
+                pause="300"
+                selected-object="selectedPerson"
+                local-data="users"
+                local-search="localSearch"
+                title-field="fname,lname"
+                minlength="1"
+                input-class="form-control form-control-small"
+                match-class="highlight">
+    </div>
+    <div class="col-xs-2">
+      <button class="btn btn-primary btn-lg btn-block" type="submit" ng-cloak ng-click="addGuest(selectedPerson.originalObject)">Add</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+    <p>guest list</p>
+    <ul ng-repeat"guest in guestList">
+      <li>{{guest.fname}}</li>
+    </ul>
+  </div>
+  </div>
+
   <label for="eventLocation">Where is it happening?</label>
   <input type="name" id="eventLocation" class="form-control" placeholder="event location" ng-model="eventLocation" name="eventLocation" required>
 
@@ -18,6 +44,14 @@
 		<ui-gmap-search-box class="map-search-box" template="searchbox.template" events="searchbox.events" position="searchbox.position" ></ui-gmap-search-box>
 		<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
   </ui-gmap-google-map>
+
+
+
+  <!-- <input type="name" id="eventGuestSearch" class="form-control" placeholder="add guests" ng-model="eventGuest" name="eventGuestSearch" required> -->
+
+  <!-- <ul ng-repeat="user in users">
+    <li>{{user.fname}}</li>
+  </ul> -->
   <!-- <div>
       <ui-gmap-google-map
               center="map.center"

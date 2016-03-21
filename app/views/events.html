@@ -6,7 +6,9 @@
 		<h2 class="text-center">{{event.name}}</h2>
 		<h4>host: {{event.host}}</h4>
 		<h4>location: {{event.location}}</h4>
-		<p>id: {{event.$id}}</p>
+		<ul ng-repeat="guest in event.guests">
+			<li>{{guest.fname}}</li>
+		</ul>
 
 	</a>
 </div>

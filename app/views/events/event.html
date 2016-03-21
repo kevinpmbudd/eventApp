@@ -1,4 +1,7 @@
 <p>{{event.name}}</p>
 <p>{{event.location}}</p>
 <p>{{event.host}}</p>
-<p>{{event.$id}}</p>
+<p>guest list</p>
+<ul ng-repeat="guest in event.guests">
+			<li>{{guest.fname}}</li>
+</ul>
