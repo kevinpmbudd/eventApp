@@ -10,5 +10,4 @@
 angular.module('eventAppApp')
   .controller('EventCtrl', function ($scope, Ref, $firebaseObject, $routeParams) {
   	$scope.event = $firebaseObject(Ref.child('events/'+ $routeParams.id));
-  	console.log($scope.event);
   });

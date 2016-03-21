@@ -20,6 +20,13 @@ function myNavbar() {
   return directive;
 
   function myNavbarCtrl($scope, Auth, Ref, $location, $log, $firebaseObject) {
+    $scope.auth = Auth;
+
+    $scope.auth.$onAuth(function(authData) {
+      $scope.authData = authData;
+      setNavbarGreetingName($scope.authData);
+    });
+
     $scope.passwordLogin = function(email, pass) {
       $scope.err = null;
       Auth.$authWithPassword({ email: email, password: pass }, { rememberMe: true })
@@ -30,12 +37,11 @@ function myNavbar() {
     	Auth.$unauth();
     	$location.path('/events');
     };
-    $scope.$on('setName', function(event, name) {
-      $scope.profile = name;
-    })
 
     function setNavbarGreetingName(user) {
-      $scope.profile = $firebaseObject(Ref.child('users').child(user.uid))
+      if(user) {
+        $scope.profile = $firebaseObject(Ref.child('users').child(user.uid));
+      }
     }
 
     function redirect() {

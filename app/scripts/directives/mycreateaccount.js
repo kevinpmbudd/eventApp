@@ -19,7 +19,7 @@ function myCreateAccount() {
 
 	return directive;
 
-	function myCreateAccountCtrl($scope, Auth, $location, $q, Ref, $timeout, $log) {
+	function myCreateAccountCtrl($scope, Auth, $location, $q, Ref, $timeout) {
 		$scope.createAccount = function(email, pass) {
 	      $scope.err = null;
 	        Auth.$createUser({email: email.trim(), password: pass.trim()})
@@ -31,7 +31,6 @@ function myCreateAccount() {
 	          .then(redirect, showError);
 
 	      function createProfile(user) {
-	        $log.log(user);
 	        var ref = Ref.child('users').child(user.uid), def = $q.defer();
 	        ref.set({email: email, fname: $scope.firstName.trim(), lname: $scope.lastName.trim()}, function(err) {
 	          $timeout(function() {

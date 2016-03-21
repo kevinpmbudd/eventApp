@@ -8,7 +8,7 @@
  * Controller of the eventAppApp
  */
 angular.module('eventAppApp')
-  .controller('NeweventCtrl', function($scope, Ref, $firebaseArray, $timeout, $location, uiGmapGoogleMapApi) {
+  .controller('NeweventCtrl', function($scope, Ref, $firebaseArray, $timeout, $location) {
     $scope.events = $firebaseArray(Ref.child('events'));
     $scope.users = $firebaseArray(Ref.child('users'));
     $scope.guestList = [];
@@ -30,8 +30,9 @@ angular.module('eventAppApp')
     //callback for guestlist autocomplete guest selector
     $scope.selectedPerson = function(guest) {
       console.log(guest);
-      if (guest.length !== 0)
+      if (guest.length !== 0) {
         $scope.guestList.push(guest.originalObject);
+      }
     };
     //clear the guest searchbox after a selection is made
     $scope.clearSelection = function(id) {
@@ -49,7 +50,7 @@ angular.module('eventAppApp')
         longitude: -98.55
       },
       zoom: 3
-    }
+    };
     //initialize a google maps marker with default options
     $scope.marker = {
     	id: 0,
@@ -63,16 +64,16 @@ angular.module('eventAppApp')
 	    places_changed: function(searchBox) {
 	    	//grab the selected item from the searchbox
 			  var place = searchBox.getPlaces();
-			  if (place.length == 0) {
+			  if (place.length === 0) {
 			    return;
 			  }
 			  //re center the map on the selected location
 			  $scope.map = {
-			    "center": {
-			      "latitude": place[0].geometry.location.lat(),
-			      "longitude": place[0].geometry.location.lng()
+			    center: {
+			      latitude: place[0].geometry.location.lat(),
+			      longitude: place[0].geometry.location.lng()
 			    },
-			    "zoom": 18
+			    zoom: 18
 			  };
 			  //add marker on the selected spot
 			  $scope.marker = {
@@ -84,7 +85,6 @@ angular.module('eventAppApp')
 			  };
 
 			  location = place[0];
-			  console.log(location);
 			}
 		};
 		//initialize map searchbox with options
@@ -93,7 +93,6 @@ angular.module('eventAppApp')
 		//add new event to firebase
     $scope.addEvent = function(name, host) {
       if (name && host) {
-      	console.log(location);
         $scope.events.$add({ name: name, host: host, location: location.formatted_address, guests: $scope.guestList })
           .then(redirect, showError)
           .catch(alert);
