@@ -26,8 +26,15 @@ angular.module('eventAppApp')
       return matches;
     };
 
-    $scope.addGuest = function(guest) {
-      $scope.guestList.push(guest);
+    // $scope.addGuest = function(guest) {
+    // 	if(guest.length !== 0)
+    //   	$scope.guestList.push(guest);
+    // };
+
+    $scope.selectedPerson = function(guest) {
+    	console.log(guest);
+    	if(guest.length !== 0)
+      	$scope.guestList.push(guest.originalObject);
     };
 
     $scope.clearSelection = function(id) {

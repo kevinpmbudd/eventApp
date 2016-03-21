@@ -144,14 +144,59 @@ i {
 .angular-google-map-container { height: 400px; }
 
 .map-search-box {
-  margin: 10px 0;
-  width: 200px;
-  height: 2.7em;
-  border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-  font-size: 11px;
+  width: 100%;
   padding: 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (min-width: 0px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+}
+
 
 // events page
 .event-card {
