@@ -33,6 +33,10 @@
 </div>
 
 <div class="col-md-4">
+  <p>{{position.coords.latitude + " " + position.coords.longitude}}</p>
+</div>
+
+<!-- <div class="col-md-4">
 <form role="form">
   <h3>Change Password</h3>
 
@@ -76,6 +80,6 @@
 </form>
 </div>
 
-</div>
+</div> -->
 <p class="clearfix"></p>
 <div ng-repeat="message in messages" class="alert alert-{{message.type}}">{{message.text}}</div>

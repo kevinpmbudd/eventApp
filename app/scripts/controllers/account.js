@@ -13,7 +13,16 @@ angular.module('eventAppApp')
     $scope.messages = [];
     var profile = $firebaseObject(Ref.child('users/'+user.uid));
     profile.$bindTo($scope, 'profile');
-    
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position){
+        $scope.$apply(function(){
+          $scope.position = position;
+          console.log(position);
+        });
+      });
+    }
+
 
     $scope.changePassword = function(oldPass, newPass, confirm) {
       $scope.err = null;

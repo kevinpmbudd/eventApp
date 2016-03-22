@@ -5,3 +5,12 @@
 <ul ng-repeat="guest in event.guests">
 			<li>{{guest.fname}}</li>
 </ul>
+
+<ui-gmap-google-map
+                center="map.center"
+                zoom="map.zoom"
+                draggable="true">
+  <ui-gmap-marker
+  				coords="marker.coords" idKey="marker.id">
+  </ui-gmap-marker>
+</ui-gmap-google-map>

@@ -84,7 +84,10 @@ angular.module('eventAppApp')
 			    }
 			  };
 
-			  location = place[0];
+			  location = {
+          latitude: place[0].geometry.location.lat(),
+          longitude: place[0].geometry.location.lng()
+        };
 			}
 		};
 		//initialize map searchbox with options
@@ -93,7 +96,7 @@ angular.module('eventAppApp')
 		//add new event to firebase
     $scope.addEvent = function(name, host) {
       if (name && host) {
-        $scope.events.$add({ name: name, host: host, location: location.formatted_address, guests: $scope.guestList })
+        $scope.events.$add({ name: name, host: host, location: location, guests: $scope.guestList })
           .then(redirect, showError)
           .catch(alert);
       }
