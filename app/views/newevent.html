@@ -1,4 +1,4 @@
-<div class="row row-offcanvas row-offcanvas-right">
+<div class="row">
   <div class="col-xs-12 col-sm-9">
     <form novalidate name="form" class="form-new-event css-form">
       <h2 class="form-signin-heading text-center">Who What Where When & Why</h2>
@@ -8,9 +8,9 @@
       <label for="eventHost">Who's hosting this event?</label>
       <input type="name" id="eventHost" class="form-control" placeholder="event host" ng-model="eventHost" name="eventHost" required>
       <label for="eventGuestSearch">Who's attending this event?</label>
-      <p class="pull-right visible-xs">
+      <!-- <p class="pull-right visible-xs">
         <button type="button" class="btn btn-primary btn-xs" id="guestListToggle" data-toggle="offcanvas">View Guest List</button>
-      </p>
+      </p> -->
 
       <div  angucomplete-alt id="eventGuest" placeholder="Search for guests" pause="300" selected-object="selectedPerson" local-data="users" local-search="localSearch" title-field="fname,lname" minlength="1" input-class="form-control form-control-small" match-class="highlight" clear-selected="true">
       </div>
@@ -44,25 +44,25 @@
     </form>
   </div>
 
-  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+  <!-- <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
     <p ng-show="guestList.length !== 0">guest list</p>
     <!-- <ul ng-repeat="guest in guestList">
       <li>{{guest.fname + " " + guest.lname}}</li>
     </ul> -->
-    <div class="list-group" ng-repeat="guest in guestList">
+    <!-- <div class="list-group" ng-repeat="guest in guestList">
 			<a href="#" class="list-group-item">{{guest.fname + " " + guest.lname}}</a>
-    </div>
-    <button type="button" class="btn btn-primary btn-xs hidden-sm hidden-md hidden-lg" id="guestListToggle" data-toggle="offcanvas">Hide Guest List</button>
-  </div>
+    </div> -->
+    <!-- <button type="button" class="btn btn-primary btn-xs hidden-sm hidden-md hidden-lg" id="guestListToggle" data-toggle="offcanvas">Hide Guest List</button> -->
+  <!-- </div>  -->
   <script>
-  	$(document).ready(function () {
-		  $('[data-toggle="offcanvas"]').click(function () {
-		    $('.row-offcanvas').toggleClass('active');
-		    if ($('#guestListToggle').text() == 'View Guest List')
-		    	$('#guestListToggle').html('Hide Guest List');
-		    else
-		    	$('#guestListToggle').html('View Guest List');
-		  });
-		});
+  // 	$(document).ready(function () {
+		//   $('[data-toggle="offcanvas"]').click(function () {
+		//     $('.row-offcanvas').toggleClass('active');
+		//     if ($('#guestListToggle').text() == 'View Guest List')
+		//     	$('#guestListToggle').html('Hide Guest List');
+		//     else
+		//     	$('#guestListToggle').html('View Guest List');
+		//   });
+		// });
   </script>
 </div>

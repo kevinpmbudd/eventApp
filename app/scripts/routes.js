@@ -88,6 +88,34 @@ angular.module('eventAppApp')
       });
   })
 
+  //support date format in firebase
+  .config(function($provide) {
+    $provide.decorator("$firebaseObject", function($delegate, $firebaseUtils) {
+      var _super = $delegate.prototype.$$updated;
+
+      // override any instance of $firebaseObject to look for a date field
+      // and transforms it to a Date object.
+      $delegate.prototype.$$updated = function(snap) {
+        var changed = _super.call(this, snap);
+        if( this.hasOwnProperty("date") ) {
+          this._dateObj = new Date(this.date);
+        }
+        return changed;
+      };
+
+      // add a method that fetches the date object we just created
+      $delegate.prototype.getDate = function() {
+        return this._dateObj;
+      };
+
+      // variables starting with _ are ignored by AngularFire so we don't need
+      // to worry about the toJSON method here
+
+      return $delegate;
+    });
+  })
+
+
   /**
    * Apply some route security. Any route's resolve method can reject the promise with
    * "AUTH_REQUIRED" to force a redirect. This method enforces that and also watches

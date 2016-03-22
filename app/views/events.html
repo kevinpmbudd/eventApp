@@ -5,7 +5,6 @@
 	<a ng-href="/#/events/{{event.$id}}" class="col-xs-12 col-sm-6 col-md-3 well event-card" ng-repeat="event in events">
 		<h2 class="text-center">{{event.name}}</h2>
 		<h4>host: {{event.host}}</h4>
-		<h4>location: {{event.location}}</h4>
 		<ul ng-repeat="guest in event.guests">
 			<li>{{guest.fname}}</li>
 		</ul>

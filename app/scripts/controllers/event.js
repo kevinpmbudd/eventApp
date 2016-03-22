@@ -10,20 +10,20 @@
 angular.module('eventAppApp')
   .controller('EventCtrl', function ($scope, Ref, $firebaseObject, $routeParams) {
   	$scope.event = $firebaseObject(Ref.child('events/'+ $routeParams.id));
-  	$scope.map = {
-  			center: {
-  				latitude: 39.85,
-  				longitude: -98.55
-  			},
-  			zoom: 3
-  	};
-  	$scope.map.marker = {
-  			id: 0,
-  			coords: {
-  				latitude: 0,
-  				longitude: 0
-  			}
-  	};
+  	// $scope.map = {
+  	// 		center: {
+  	// 			latitude: 39.85,
+  	// 			longitude: -98.55
+  	// 		},
+  	// 		zoom: 3
+  	// };
+  	// $scope.map.marker = {
+  	// 		id: 0,
+  	// 		coords: {
+  	// 			latitude: 0,
+  	// 			longitude: 0
+  	// 		}
+  	// };
 
   	$scope.event.$loaded()
   	.then(function(data) {
