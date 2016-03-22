@@ -10,26 +10,36 @@
 angular.module('eventAppApp')
   .controller('EventCtrl', function ($scope, Ref, $firebaseObject, $routeParams) {
   	$scope.event = $firebaseObject(Ref.child('events/'+ $routeParams.id));
+  	$scope.map = {
+  			center: {
+  				latitude: 39.85,
+  				longitude: -98.55
+  			},
+  			zoom: 3
+  	};
+  	$scope.map.marker = {
+  			id: 0,
+  			coords: {
+  				latitude: 0,
+  				longitude: 0
+  			}
+  	};
 
-  	//initialize google map with default options
-    $scope.map = {
-      control: {},
-      center: {
-        latitude: 39.85,
-        longitude: -98.55
-      },
-      zoom: 3
-    };
-
-    console.log($scope.event);
-
-    // initialize a google maps marker with default options
-    // $scope.marker = {
-    // 	id: 0,
-    //   coords: {
-    //     latitude: $scope.event.location.latitude,
-    //     longitude: $scope.event.location.longitude
-    //   }
-    // };
-
+  	$scope.event.$loaded()
+  	.then(function(data) {
+  		$scope.map = {
+  			center: {
+  				latitude: data.location.latitude,
+  				longitude: data.location.longitude
+  			},
+  			zoom: 17
+  		}
+	  	$scope.map.marker = {
+  			id: 0,
+  			coords: {
+  				latitude: data.location.latitude,
+  				longitude: data.location.longitude
+  			}
+  		};
+  	});
   });

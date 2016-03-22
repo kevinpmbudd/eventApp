@@ -1,5 +1,4 @@
 <p>{{event.name}}</p>
-<p>{{event.location}}</p>
 <p>{{event.host}}</p>
 <p>guest list</p>
 <ul ng-repeat="guest in event.guests">
@@ -7,10 +6,11 @@
 </ul>
 
 <ui-gmap-google-map
+
                 center="map.center"
                 zoom="map.zoom"
                 draggable="true">
   <ui-gmap-marker
-  				coords="marker.coords" idKey="marker.id">
+  				coords="map.marker.coords" idKey="map.marker.id">
   </ui-gmap-marker>
 </ui-gmap-google-map>

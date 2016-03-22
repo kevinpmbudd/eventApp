@@ -5,14 +5,14 @@
   <div class="row">
     <div class="col-xs-6">
       <label for="accountFirstName">First Name</label>
-      <input type="text" id="accountFirstName" class="form-control" placeholder="First Name" required autocomplete="fname" name="fname" type="fname" ng-model="firstName" autofocus>
+      <input type="text" id="accountFirstName" class="form-control" placeholder="First Name" required autocomplete="given-name" name="fname" ng-model="firstName" autofocus>
       <div ng-show="form.$submitted || form.email.$touched">
         <span ng-show="form.email.$error.required">Please enter your First Name.</span>
       </div>
     </div>
     <div class="col-xs-6">
       <label for="accountLastName">Last Name</label>
-      <input type="text" id="accountLastName" class="form-control" placeholder="Last Name" required autocomplete="lname" name="lname" type="lname" ng-model="lastName">
+      <input type="text" id="accountLastName" class="form-control" placeholder="Last Name" required autocomplete="family-name" name="lname" ng-model="lastName">
       <div ng-show="form.$submitted || form.email.$touched">
         <span ng-show="form.email.$error.required">Please enter your Last Name.</span>
       </div>
