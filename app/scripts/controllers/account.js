@@ -26,6 +26,11 @@ angular.module('eventAppApp')
       });
     };
 
+    profile.$loaded()
+    .then(function(data) {
+      $scope.birthday = new Date(profile.bdYear, profile.bdMonth - 1, profile.bdDay);
+    });
+
     // $scope.changePassword = function(oldPass, newPass, confirm) {
     //   $scope.err = null;
     //   if( !oldPass || !newPass ) {
