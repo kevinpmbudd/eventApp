@@ -23,8 +23,12 @@ body {
 }
 /* Navbar */
 nav {
-  background: rgba(0,0,0,0.0);
-  color: #000000;
+  // background: rgba(0,0,0,0.0);
+  // color: #000000;
+
+  // .icon-bar {
+  //   color: #000000
+  // }
 }
 @media (min-width: 768px) and (max-width: 992px) {
     nav #loginPass {
@@ -36,18 +40,20 @@ nav {
 
 }
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+// .header,
+// .marketing,
+// .footer {
+//   padding-left: 15px;
+//   padding-right: 15px;
+// }
+.jumbotron {
+  background: rgba(0,0,0,0.1);
 }
-
-.big-logo {
-  min-height: 50vh;
-  display: flex;
-  align-items: center;
-}
+// .big-logo {
+//   min-height: 50vh;
+//   display: flex;
+//   align-items: center;
+// }
 
 /* Create account form */
 .form-signin {
@@ -129,7 +135,18 @@ nav {
   background-color: #fff;
   inset: 0 1px 1px rgba(0, 0, 0, 0.075);
 }
-
+.add-guest {
+  font-size: 2em;
+  color: #000000;
+}
+.hide-button {
+  // background: transparent;
+  // border: none !important;
+  // font-size:0;
+  margin-top: 24px;
+  height: 47px;
+  background: #FFFFFF;
+}
 // events page
 .event-card {
   background: rgba(0,0,0,0.1);

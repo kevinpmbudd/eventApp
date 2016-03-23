@@ -8,17 +8,33 @@
       <label for="eventHost">Who's hosting this event?</label>
       <input type="name" id="eventHost" class="form-control" placeholder="event host" ng-model="eventHost" name="eventHost" required>
 
-      <!-- <label for="eventDates">When is it going down?</label>
-      <input id="eventDates" type="daterange" class="form-control" ng-model="eventDateRange" name="eventDateRange" required/> -->
+      <label for="eventType">What type of event is this?</label>
+      <input id="eventType" list="types" type="text" placeholder="event type" class="form-control" ng-model="eventType" name="eventType" required/>
+      <datalist id="types">
+        <option value="Birthday">
+        <option value="Wedding">
+        <option value="Graduation">
+        <option value="Anniversary">
+        <option value="Meetup">
+        <option value="Potluck">
+      </datalist>
 
-
-      <label for="eventGuestSearch">Who's attending this event?</label>
-      <!-- <p class="pull-right visible-xs">
-        <button type="button" class="btn btn-primary btn-xs" id="guestListToggle" data-toggle="offcanvas">View Guest List</button>
-      </p> -->
-
-      <div  angucomplete-alt id="eventGuest" placeholder="Search for guests" pause="300" selected-object="selectedPerson" local-data="users" local-search="localSearch" title-field="fname,lname" minlength="1" input-class="form-control form-control-small" match-class="highlight" clear-selected="true">
+      <div class="row">
+        <div class="col-xs-9">
+          <label for="eventGuests">Who?</label>
+          <input id="eventGuests" list="guests" type="text" placeholder="event guests" class="form-control" ng-model="eventGuest" name="eventGuest"/>
+          <datalist id="guests">
+            <option ng-repeat="user in users" value="{{user.fname + ' ' + user.lname}}">
+          </datalist>
+        </div>
+        <div class="col-xs-2">
+          <button class="hide-button" ng-disabled="!eventGuest" ng-click="addGuest(eventGuest)"><i class="glyphicon glyphicon-plus add-guest text-left"></i></button>
+        </div>
       </div>
+
+      <!-- <label for="eventGuestSearch">Who's attending this event?</label>
+      <div  angucomplete-alt id="eventGuest" placeholder="enter a guest name" pause="300" selected-object="selectedPerson" local-data="users" local-search="localSearch" title-field="fname,lname" minlength="1" input-class="form-control form-control-small" match-class="highlight" clear-selected="true">
+      </div> -->
         <!-- <div class="col-xs-2">
           <button class="btn btn-primary btn-lg" type="submit" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">Add</button>
         </div> -->
@@ -26,7 +42,7 @@
       <div id="eventLocation"></div>
       <!-- <input type="name" id="eventLocation" class="form-control" placeholder="event location" ng-model="eventLocation" name="eventLocation" required> -->
       <script type="text/ng-template" id="searchbox.tpl.html">
-        <input type="text" class="map-search-box" placeholder="Search Box">
+        <input type="text" class="map-search-box" placeholder="event location">
       </script>
 
       <ui-gmap-google-map
@@ -45,7 +61,7 @@
         </ui-gmap-marker>
       </ui-gmap-google-map>
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid" ng-cloak ng-click="addEvent(eventName, eventHost, eventLocation)">Party On Wayne</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid" ng-cloak ng-click="addEvent(eventName, eventHost)">Party On Wayne</button>
     </form>
   </div>
 </div>

@@ -1,5 +1,6 @@
 <!-- Thank you to Duncan @ http://stackoverflow.com/questions/27211799/angular-ng-repeat-add-bootstrap-row-every-3-or-4-cols -->
 <div class="row">
+	<h1 class="jumbotron text-center">EVENTS</h1>
 	<div ng-repeat="event in events">
 		<div class="clearfix" ng-if="$index % 3 == 0" ></div>
       <a ng-href="/#/events/{{event.$id}}" class="col-xs-12 col-sm-4 well event-card">

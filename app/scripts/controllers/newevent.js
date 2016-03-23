@@ -27,13 +27,22 @@ angular.module('eventAppApp')
       });
       return matches;
     };
-    //callback for guestlist autocomplete guest selector
-    $scope.selectedPerson = function(guest) {
+
+    $scope.addGuest = function(guest) {
       console.log(guest);
-      if (guest.length !== 0) {
-        $scope.guestList.push(guest.originalObject);
-      }
+      $scope.guestList.push(guest);
+      console.log($scope.guestList);
+      $scope.eventGuest = '';
+      console.log($scope.eventType);
     };
+
+    // //callback for guestlist autocomplete guest selector
+    // $scope.selectedPerson = function(guest) {
+    //   console.log(guest);
+    //   if (guest.length !== 0) {
+    //     $scope.guestList.push(guest.originalObject);
+    //   }
+    // };
     //clear the guest searchbox after a selection is made
     $scope.clearSelection = function(id) {
       if (id) {
@@ -96,7 +105,7 @@ angular.module('eventAppApp')
 		//add new event to firebase
     $scope.addEvent = function(name, host) {
       if (name && host) {
-        $scope.events.$add({ name: name, host: host, location: location, guests: $scope.guestList })
+        $scope.events.$add({ name: name, host: host, type: $scope.eventType, location: location, guests: $scope.guestList })
           .then(redirect, showError)
           .catch(alert);
       }
