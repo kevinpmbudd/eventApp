@@ -7,6 +7,11 @@
       <input type="name" id="eventName" class="form-control" placeholder="event name" ng-model="eventName" name="eventName" required>
       <label for="eventHost">Who's hosting this event?</label>
       <input type="name" id="eventHost" class="form-control" placeholder="event host" ng-model="eventHost" name="eventHost" required>
+
+      <!-- <label for="eventDates">When is it going down?</label>
+      <input id="eventDates" type="daterange" class="form-control" ng-model="eventDateRange" name="eventDateRange" required/> -->
+
+
       <label for="eventGuestSearch">Who's attending this event?</label>
       <!-- <p class="pull-right visible-xs">
         <button type="button" class="btn btn-primary btn-xs" id="guestListToggle" data-toggle="offcanvas">View Guest List</button>
@@ -43,26 +48,4 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid" ng-cloak ng-click="addEvent(eventName, eventHost, eventLocation)">Party On Wayne</button>
     </form>
   </div>
-
-  <!-- <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-    <p ng-show="guestList.length !== 0">guest list</p>
-    <!-- <ul ng-repeat="guest in guestList">
-      <li>{{guest.fname + " " + guest.lname}}</li>
-    </ul> -->
-    <!-- <div class="list-group" ng-repeat="guest in guestList">
-			<a href="#" class="list-group-item">{{guest.fname + " " + guest.lname}}</a>
-    </div> -->
-    <!-- <button type="button" class="btn btn-primary btn-xs hidden-sm hidden-md hidden-lg" id="guestListToggle" data-toggle="offcanvas">Hide Guest List</button> -->
-  <!-- </div>  -->
-  <script>
-  // 	$(document).ready(function () {
-		//   $('[data-toggle="offcanvas"]').click(function () {
-		//     $('.row-offcanvas').toggleClass('active');
-		//     if ($('#guestListToggle').text() == 'View Guest List')
-		//     	$('#guestListToggle').html('Hide Guest List');
-		//     else
-		//     	$('#guestListToggle').html('View Guest List');
-		//   });
-		// });
-  </script>
 </div>

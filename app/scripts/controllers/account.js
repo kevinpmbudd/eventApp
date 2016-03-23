@@ -20,7 +20,7 @@ angular.module('eventAppApp')
       profile.bdMonth = date.getMonth() + 1;
       profile.bdDay = date.getDate();
       profile.$save().then(function(ref) {
-        console.log('success', ref)
+        console.log('success', ref);
       }, function (error) {
         console.log('error ', error);
       });

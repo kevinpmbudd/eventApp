@@ -2,34 +2,30 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
-
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 html, body {
   width: 100%;
   width: 100%;
   padding: 0;
 }
-// div {
-//   background-color:rgba(255,0,0,0.5)
-// }
 .container {
    background: rgba(0,0,0,0.0);
-
-  //  @media (min-width: 768px) {
-  //   margin-top: 100px;
-  // }
 }
-// .bg {
-//   height: 100%;
-//   width: 100%;
-//   background: url(/images/ocean-meets-the-sky.jpg) center center no-repeat;
-//   background-size: cover;
-// }
 body {
   background: url(/images/tc-horizon.png) no-repeat 50% 50% fixed;
   background-size: cover;
   // opacity: 0.3;
 }
 /* Navbar */
+nav {
+  background: rgba(0,0,0,0.0);
+  color: #000000;
+}
 @media (min-width: 768px) and (max-width: 992px) {
     nav #loginPass {
       max-width: 75%;
@@ -47,29 +43,10 @@ body {
   padding-right: 15px;
 }
 
-// .container-narrow > hr {
-//   margin: 30px 0;
-// }
 .big-logo {
-  // min-height: 100%;
   min-height: 50vh;
   display: flex;
   align-items: center;
-}
-i {
-  font-size: 16em;
-  color: white;
-  @media (min-width: 768px) {
-    color: red;
-  }
-  @media (min-width: 992px) {
-    font-size: 20em;
-    color: orange;
-  }
-  @media (min-width: 1200px) {
-    font-size: 24em;
-    color: yellow;
-  }
 }
 
 /* Create account form */
@@ -152,56 +129,28 @@ i {
   background-color: #fff;
   inset: 0 1px 1px rgba(0, 0, 0, 0.075);
 }
-/*
- * Off Canvas
- * --------------------------------------------------
- */
-@media screen and (min-width: 0px) {
-  .row-offcanvas {
-    position: relative;
-    -webkit-transition: all .25s ease-out;
-         -o-transition: all .25s ease-out;
-            transition: all .25s ease-out;
-  }
-
-  .row-offcanvas-right {
-    right: 0;
-  }
-
-  .row-offcanvas-left {
-    left: 0;
-  }
-
-  .row-offcanvas-right
-  .sidebar-offcanvas {
-    right: -50%; /* 6 columns */
-  }
-
-  .row-offcanvas-left
-  .sidebar-offcanvas {
-    left: -50%; /* 6 columns */
-  }
-
-  .row-offcanvas-right.active {
-    right: 50%; /* 6 columns */
-  }
-
-  .row-offcanvas-left.active {
-    left: 50%; /* 6 columns */
-  }
-
-  .sidebar-offcanvas {
-    position: absolute;
-    top: 0;
-    width: 50%; /* 6 columns */
-  }
-}
-
 
 // events page
 .event-card {
   background: rgba(0,0,0,0.1);
-  margin: 3px 3px 3px 3px;
+  margin: 0 auto;
+  border: 1px solid white;
+  height: 200px;
+}
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
 }
 
 footer p {
@@ -209,8 +158,6 @@ footer p {
 }
 
 .footer {
-  // position: absolute;
-  // bottom: 0;
   width: 100%;
   height: 60px;
   background-color: #000000;

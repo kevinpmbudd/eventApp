@@ -33,7 +33,7 @@ angular.module('eventAppApp')
   				longitude: data.location.longitude
   			},
   			zoom: 17
-  		}
+  		};
 	  	$scope.map.marker = {
   			id: 0,
   			coords: {

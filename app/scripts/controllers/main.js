@@ -8,7 +8,7 @@
  * Controller of the eventAppApp
  */
 angular.module('eventAppApp')
-  .controller('MainCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
+  .controller('MainCtrl', function () {
 
 
   });
