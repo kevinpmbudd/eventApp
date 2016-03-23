@@ -7,7 +7,7 @@
  * Provides rudimentary account management functions.
  */
 angular.module('eventAppApp')
-  .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout) {
+  .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout, myDate) {
     $scope.user = user;
     $scope.logout = function() { Auth.$unauth(); };
     $scope.messages = [];
@@ -15,10 +15,7 @@ angular.module('eventAppApp')
     profile.$bindTo($scope, 'profile');
 
     $scope.update = function (date) {
-      console.log(date.getMonth());
-      profile.bdYear = date.getFullYear();
-      profile.bdMonth = date.getMonth() + 1;
-      profile.bdDay = date.getDate();
+      profile.birthday = myDate.dateToObject(date);
       profile.$save().then(function(ref) {
         console.log('success', ref);
       }, function (error) {
@@ -28,7 +25,10 @@ angular.module('eventAppApp')
 
     profile.$loaded()
     .then(function(data) {
-      $scope.birthday = new Date(profile.bdYear, profile.bdMonth - 1, profile.bdDay);
+      // $scope.birthday = new Date(profile.bdYear, profile.bdMonth - 1, profile.bdDay);
+      if ($scope.birthday) {
+        $scope.birthday = myDate.objectToDate(profile.birthday);
+      }
     });
 
     // $scope.changePassword = function(oldPass, newPass, confirm) {
