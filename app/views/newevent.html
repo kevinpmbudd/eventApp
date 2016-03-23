@@ -1,67 +1,105 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-9">
-    <form novalidate name="form" class="form-new-event css-form">
-      <h2 class="form-signin-heading text-center">Who What Where When & Why</h2>
-      <p ng-show="err" class="bg-danger">{{err}}</p>
-      <label for="eventName">What is this event called?</label>
-      <input type="name" id="eventName" class="form-control" placeholder="event name" ng-model="eventName" name="eventName" required>
-      <label for="eventHost">Who's hosting this event?</label>
-      <input type="name" id="eventHost" class="form-control" placeholder="event host" ng-model="eventHost" name="eventHost" required>
+<!-- <div class="row"> -->
+  <form novalidate name="form" class="form-new-event css-form">
+    <h2 class="jumbotron text-center">Who What Where When & Why</h2>
+    <p ng-show="err" class="bg-danger">{{err}}</p>
 
-      <label for="eventType">What type of event is this?</label>
-      <input id="eventType" list="types" type="text" placeholder="event type" class="form-control" ng-model="eventType" name="eventType" required/>
-      <datalist id="types">
-        <option value="Birthday">
-        <option value="Wedding">
-        <option value="Graduation">
-        <option value="Anniversary">
-        <option value="Meetup">
-        <option value="Potluck">
-      </datalist>
-
-      <div class="row">
-        <div class="col-xs-9">
-          <label for="eventGuests">Who?</label>
-          <input id="eventGuests" list="guests" type="text" placeholder="event guests" class="form-control" ng-model="eventGuest" name="eventGuest"/>
-          <datalist id="guests">
-            <option ng-repeat="user in users" value="{{user.fname + ' ' + user.lname}}">
-          </datalist>
-        </div>
-        <div class="col-xs-2">
-          <button class="hide-button" ng-disabled="!eventGuest" ng-click="addGuest(eventGuest)"><i class="glyphicon glyphicon-plus add-guest text-left"></i></button>
-        </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <label for="eventName">What is this event called?</label>
+        <input type="name" id="eventName" class="form-control" placeholder="event name" ng-model="eventName" name="eventName" required>
       </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <label for="eventHost">Who's hosting this event?</label>
+        <input type="name" id="eventHost" class="form-control" placeholder="event host" ng-model="eventHost" name="eventHost" required>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <label for="eventType">What type of event is this?</label>
+        <input id="eventType" list="types" type="text" placeholder="event type" class="form-control" ng-model="eventType" name="eventType" required/>
+        <datalist id="types">
+          <option value="Birthday">
+          <option value="Wedding">
+          <option value="Graduation">
+          <option value="Anniversary">
+          <option value="Meetup">
+          <option value="Potluck">
+        </datalist>
+      </div>
+    </div>
 
-      <!-- <label for="eventGuestSearch">Who's attending this event?</label>
-      <div  angucomplete-alt id="eventGuest" placeholder="enter a guest name" pause="300" selected-object="selectedPerson" local-data="users" local-search="localSearch" title-field="fname,lname" minlength="1" input-class="form-control form-control-small" match-class="highlight" clear-selected="true">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <label for="startDate">What day does it start?</label>
+          <div>
+            <p class="input-group">
+              <input id="startDate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+      </div>
+      <div class="col-md-2">
+        <uib-timepicker ng-model="startTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <label for="endDate">What day does it end?</label>
+          <div>
+            <p class="input-group">
+              <input id="endDate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+      </div>
+      <div class="col-md-2">
+        <uib-timepicker ng-model="endTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-9">
+        <label for="eventGuests">Who?</label>
+        <input id="eventGuests" list="guests" type="text" placeholder="event guests" class="form-control" ng-model="eventGuest" name="eventGuest"/>
+        <datalist id="guests">
+          <option ng-repeat="user in users" value="{{user.fname + ' ' + user.lname}}">
+        </datalist>
+      </div>
+      <div class="col-xs-2">
+        <button class="hide-button" ng-disabled="!eventGuest" ng-click="addGuest(eventGuest)"><i class="glyphicon glyphicon-plus add-guest text-left"></i></button>
+      </div>
+    </div>
+
+    <!-- <label for="eventGuestSearch">Who's attending this event?</label>
+    <div  angucomplete-alt id="eventGuest" placeholder="enter a guest name" pause="300" selected-object="selectedPerson" local-data="users" local-search="localSearch" title-field="fname,lname" minlength="1" input-class="form-control form-control-small" match-class="highlight" clear-selected="true">
+    </div> -->
+      <!-- <div class="col-xs-2">
+        <button class="btn btn-primary btn-lg" type="submit" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">Add</button>
       </div> -->
-        <!-- <div class="col-xs-2">
-          <button class="btn btn-primary btn-lg" type="submit" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">Add</button>
-        </div> -->
-      <label for="eventLocation">Where is it happening?</label>
-      <div id="eventLocation"></div>
-      <!-- <input type="name" id="eventLocation" class="form-control" placeholder="event location" ng-model="eventLocation" name="eventLocation" required> -->
-      <script type="text/ng-template" id="searchbox.tpl.html">
-        <input type="text" class="map-search-box" placeholder="event location">
-      </script>
+    <label for="eventLocation">Where is it happening?</label>
+    <div id="eventLocation"></div>
+    <!-- <input type="name" id="eventLocation" class="form-control" placeholder="event location" ng-model="eventLocation" name="eventLocation" required> -->
+    <script type="text/ng-template" id="searchbox.tpl.html">
+      <input type="text" class="map-search-box" placeholder="event location">
+    </script>
 
-      <ui-gmap-google-map
-                center="map.center"
-                zoom="map.zoom"
-                draggable="true">
-        <ui-gmap-search-box
-        				class="map-search-box"
-        				options="searchbox.options"
-        				template="searchbox.template"
-        				events="searchbox.events"
-        				parentdiv="searchbox.parentdiv">
-        </ui-gmap-search-box>
-        <ui-gmap-marker
-        				coords="marker.coords" idKey="marker.id">
-        </ui-gmap-marker>
-      </ui-gmap-google-map>
+    <ui-gmap-google-map
+              center="map.center"
+              zoom="map.zoom"
+              draggable="true">
+      <ui-gmap-search-box
+      				class="map-search-box"
+      				options="searchbox.options"
+      				template="searchbox.template"
+      				events="searchbox.events"
+      				parentdiv="searchbox.parentdiv">
+      </ui-gmap-search-box>
+      <ui-gmap-marker
+      				coords="marker.coords" idKey="marker.id">
+      </ui-gmap-marker>
+    </ui-gmap-google-map>
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid" ng-cloak ng-click="addEvent(eventName, eventHost)">Party On Wayne</button>
-    </form>
-  </div>
-</div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid" ng-cloak ng-click="addEvent(eventName, eventHost)">Party On Wayne</button>
+  </form>
+<!-- </div> -->
