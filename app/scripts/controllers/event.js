@@ -8,7 +8,7 @@
  * Controller of the eventAppApp
  */
 angular.module('eventAppApp')
-  .controller('EventCtrl', function ($scope, Ref, $firebaseObject, $routeParams) {
+  .controller('EventCtrl', function ($scope, Ref, $firebaseObject, $routeParams, myDate) {
   	$scope.event = $firebaseObject(Ref.child('events/'+ $routeParams.id));
   	// $scope.map = {
   	// 		center: {
@@ -41,5 +41,13 @@ angular.module('eventAppApp')
   				longitude: data.location.longitude
   			}
   		};
+
+      if($scope.event.startDate) {
+        $scope.startDate = myDate.objectToDate($scope.event.startDate);
+      }
+
+      if($scope.event.endDate) {
+        $scope.endDate = myDate.objectToDate($scope.event.endDate);
+      }
   	});
   });

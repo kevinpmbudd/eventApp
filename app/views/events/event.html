@@ -1,15 +1,17 @@
 <div class="jumbotron text-center">
 	<h1>{{event.name}}</h1>
 	<h5>by: {{event.host}}</h5>
+  <p>{{startDate  | date:'MM-dd-yyyy'}}</p>
+  <p>{{endDate  | date:'MM-dd-yyyy'}}</p>
 	<div class="dropdown text-left">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Guest List
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li ng-repeat="guest in event.guests">{{guest}}</li>
-  </ul>
-</div>
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Guest List
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li ng-repeat="guest in event.guests">{{guest}}</li>
+    </ul>
+  </div>
 </div>
 
 <ui-gmap-google-map

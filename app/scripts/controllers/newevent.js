@@ -8,32 +8,32 @@
  * Controller of the eventAppApp
  */
 angular.module('eventAppApp')
-  .controller('NeweventCtrl', function($scope, Ref, $firebaseArray, $timeout, $location) {
+  .controller('NeweventCtrl', function($scope, Ref, $firebaseArray, $timeout, $location, myDate) {
     $scope.events = $firebaseArray(Ref.child('events'));
     $scope.users = $firebaseArray(Ref.child('users'));
     $scope.guestList = [];
     var location;
 
     // Autocomplete searchbox to add guests to guest list
-    $scope.localSearch = function(str) {
-      var matches = [];
-      $scope.users.forEach(function(person) {
-        var fullName = person.fname + ' ' + person.lname;
-        if ((person.fname.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0) ||
-          (person.lname.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0) ||
-          (fullName.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0)) {
-          matches.push(person);
-        }
-      });
-      return matches;
-    };
+    // $scope.localSearch = function(str) {
+    //   var matches = [];
+    //   $scope.users.forEach(function(person) {
+    //     var fullName = person.fname + ' ' + person.lname;
+    //     if ((person.fname.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0) ||
+    //       (person.lname.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0) ||
+    //       (fullName.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0)) {
+    //       matches.push(person);
+    //     }
+    //   });
+    //   return matches;
+    // };
 
     $scope.addGuest = function(guest) {
-      console.log(guest);
+      // console.log(guest);
       $scope.guestList.push(guest);
       console.log($scope.guestList);
       $scope.eventGuest = '';
-      console.log($scope.dt);
+      console.log($scope.events);
     };
 
     // //callback for guestlist autocomplete guest selector
@@ -44,13 +44,13 @@ angular.module('eventAppApp')
     //   }
     // };
     //clear the guest searchbox after a selection is made
-    $scope.clearSelection = function(id) {
-      if (id) {
-        $scope.$broadcast('angucomplete-alt:clearInput', id);
-      } else {
-        $scope.$broadcast('angucomplete-alt:clearInput');
-      }
-    };
+    // $scope.clearSelection = function(id) {
+    //   if (id) {
+    //     $scope.$broadcast('angucomplete-alt:clearInput', id);
+    //   } else {
+    //     $scope.$broadcast('angucomplete-alt:clearInput');
+    //   }
+    // };
     //initialize google map with default options
     $scope.map = {
       control: {},
@@ -103,9 +103,31 @@ angular.module('eventAppApp')
     $scope.searchbox = { template: 'searchbox.tpl.html', events: events, parentdiv: 'eventLocation' };
 
     //add new event to firebase
+    // $scope.addEvent = function() {
+    //   $scope.events.$add({
+    //     name: $scope.eventName,
+    //     host: $scope.eventHost,
+    //     type: $scope.eventType,
+    //     // startDate: myDate.dateToObject($scope.startDate),
+    //     location: location,
+    //     guests: $scope.guestList
+    //   })
+    //   .then(redirect, showError)
+    //   .catch(alert);
+
+    //   $scope.guestList = [];
+    // };
+
     $scope.addEvent = function(name, host) {
       if (name && host) {
-        $scope.events.$add({ name: name, host: host, type: $scope.eventType, location: location, guests: $scope.guestList })
+        $scope.events.$add({
+          name: name,
+          host: host,
+          type: $scope.eventType,
+          startDate: myDate.dateToObject($scope.startDate),
+          endDate: myDate.dateToObject($scope.endDate),
+          location: location,
+          guests: $scope.guestList })
           .then(redirect, showError)
           .catch(alert);
       }
@@ -136,11 +158,11 @@ angular.module('eventAppApp')
       $scope.dt = null;
     };
 
-    $scope.inlineOptions = {
-      customClass: getDayClass,
-      minDate: new Date(),
-      showWeeks: true
-    };
+    // $scope.inlineOptions = {
+    //   customClass: getDayClass,
+    //   minDate: new Date(),
+    //   showWeeks: true
+    // };
 
     $scope.dateOptions = {
       dateDisabled: disabled,
@@ -157,20 +179,24 @@ angular.module('eventAppApp')
       return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
     }
 
-    $scope.toggleMin = function() {
-      $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
-      $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
-    };
+    // $scope.toggleMin = function() {
+    //   $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+    //   $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+    // };
 
-    $scope.toggleMin();
+    // $scope.toggleMin();
 
     $scope.open1 = function() {
       $scope.popup1.opened = true;
     };
 
-    $scope.setDate = function(year, month, day) {
-      $scope.dt = new Date(year, month, day);
+    $scope.open2 = function() {
+      $scope.popup2.opened = true;
     };
+
+    // $scope.setDate = function(year, month, day) {
+    //   $scope.dt = new Date(year, month, day);
+    // };
 
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     $scope.format = $scope.formats[0];
@@ -180,35 +206,39 @@ angular.module('eventAppApp')
       opened: false
     };
 
-    var tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    var afterTomorrow = new Date();
-    afterTomorrow.setDate(tomorrow.getDate() + 1);
-    $scope.events = [{
-      date: tomorrow,
-      status: 'full'
-    }, {
-      date: afterTomorrow,
-      status: 'partially'
-    }];
+    $scope.popup2 = {
+      opened: false
+    };
 
-    function getDayClass(data) {
-      var date = data.date,
-        mode = data.mode;
-      if (mode === 'day') {
-        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+    // var tomorrow = new Date();
+    // tomorrow.setDate(tomorrow.getDate() + 1);
+    // var afterTomorrow = new Date();
+    // afterTomorrow.setDate(tomorrow.getDate() + 1);
+    // $scope.eventsCalendar = [{
+    //   date: tomorrow,
+    //   status: 'full'
+    // }, {
+    //   date: afterTomorrow,
+    //   status: 'partially'
+    // }];
 
-        for (var i = 0; i < $scope.events.length; i++) {
-          var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+    // function getDayClass(data) {
+    //   var date = data.date,
+    //     mode = data.mode;
+    //   if (mode === 'day') {
+    //     var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-          if (dayToCheck === currentDay) {
-            return $scope.events[i].status;
-          }
-        }
-      }
+    //     for (var i = 0; i < $scope.eventsCalendar.length; i++) {
+    //       var currentDay = new Date($scope.eventsCalendar[i].date).setHours(0, 0, 0, 0);
 
-      return '';
-    }
+    //       if (dayToCheck === currentDay) {
+    //         return $scope.eventsCalendar[i].status;
+    //       }
+    //     }
+    //   }
+
+    //   return '';
+    // }
 
     $scope.startTime = new Date();
     $scope.endTime = new Date();
@@ -234,7 +264,7 @@ angular.module('eventAppApp')
     };
 
     $scope.changed = function() {
-      $log.log('Time changed to: ' + $scope.mytime);
+      // $log.log('Time changed to: ' + $scope.mytime);
     };
 
     $scope.clear = function() {
