@@ -1,6 +1,6 @@
 <!-- <div class="row"> -->
 <form novalidate name="form" class="form-new-event css-form">
-  <h2 class="jumbotron text-center">Who What Where When & Why</h2>
+  <h2 class="jumbotron text-center">{{eventName}}{{eventHost}}</h2>
   <p ng-show="err" class="bg-danger">{{err}}</p>
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
@@ -43,15 +43,18 @@
     </div> -->
   </div>
   <div class="row">
-    <div class="col-xs-9">
+    <div class="col-xs-11">
       <label for="eventGuests">Who?</label>
       <input id="eventGuests" list="guests" type="text" placeholder="event guests" class="form-control" ng-model="eventGuest" name="eventGuest" />
       <datalist id="guests">
         <option ng-repeat="user in users" value="{{user.fname + ' ' + user.lname}}">
       </datalist>
     </div>
-    <div class="col-xs-2">
-      <button class="hide-button" ng-disabled="!eventGuest" ng-click="addGuest(eventGuest)"><i class="glyphicon glyphicon-plus add-guest text-left"></i></button>
+    <div class="col-xs-1">
+      <button type="button" class="btn btn-xs btn-success">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
+      <!-- <button class="hide-button" ng-disabled="!eventGuest" ng-click="addGuest(eventGuest)"><i class="glyphicon glyphicon-plus add-guest text-left"></i></button> -->
     </div>
   </div>
   <!-- <label for="eventGuestSearch">Who's attending this event?</label>
