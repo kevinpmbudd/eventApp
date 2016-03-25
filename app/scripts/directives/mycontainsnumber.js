@@ -6,6 +6,7 @@
  * @description
  * # myContainsNumber
  */
+var NUMBER_REGEXP = /\d/g;
 angular.module('eventAppApp')
   .directive('myContainsNumber', function () {
     return {
