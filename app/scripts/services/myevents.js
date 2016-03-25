@@ -23,7 +23,7 @@ angular.module('eventAppApp')
         startDate: myDate.dateToObject(event.startDate),
         endDate: myDate.dateToObject(event.endDate),
         location: event.location,
-        guests: event.guestList
+        guests: event.guests
       });
     };
 

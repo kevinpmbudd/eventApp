@@ -8,16 +8,23 @@
  * Controller of the eventAppApp
  */
 angular.module('eventAppApp')
-  .controller('NeweventCtrl', function($scope, Ref, $firebaseArray, $timeout, $location, myDate) {
-    $scope.events = $firebaseArray(Ref.child('events'));
+  .controller('NeweventCtrl', function($scope, Ref, $firebaseArray, $timeout, $location, myEvents) {
+    //$scope.events = myEvents.list;
+    $scope.newEvent = {};
+
+    $scope.addEvent = function(event) {
+      console.log(event);
+      myEvents.add(event);
+    };
+
     $scope.users = $firebaseArray(Ref.child('users'));
-    $scope.guestList = [];
-    var location;
+    $scope.newEvent.guests = [];
+    // var location;
 
     $scope.addGuest = function(guest) {
       // console.log(guest);
-      $scope.guestList.push(guest);
-      console.log($scope.guestList);
+      $scope.newEvent.guests.push(guest);
+      console.log($scope.newEvent.guests);
       $scope.eventGuest = '';
       console.log($scope.events);
     };
@@ -64,7 +71,7 @@ angular.module('eventAppApp')
           }
         };
 
-        location = {
+        $scope.newEvent.location = {
           latitude: place[0].geometry.location.lat(),
           longitude: place[0].geometry.location.lng()
         };
@@ -73,21 +80,21 @@ angular.module('eventAppApp')
     //initialize map searchbox with options
     $scope.searchbox = { template: 'searchbox.tpl.html', events: events, parentdiv: 'eventLocation' };
 
-    $scope.addEvent = function(name, host) {
-      if (name && host) {
-        $scope.events.$add({
-          name: name,
-          host: host,
-          type: $scope.eventType,
-          startDate: myDate.dateToObject($scope.startDate),
-          endDate: myDate.dateToObject($scope.endDate),
-          location: location,
-          guests: $scope.guestList })
-          .then(redirect, showError)
-          .catch(alert);
-      }
-      $scope.guestList = [];
-    };
+    // $scope.addEvent = function(name, host) {
+    //   if (name && host) {
+    //     $scope.events.$add({
+    //       name: name,
+    //       host: host,
+    //       type: $scope.eventType,
+    //       startDate: myDate.dateToObject($scope.startDate),
+    //       endDate: myDate.dateToObject($scope.endDate),
+    //       location: location,
+    //       guests: $scope.guestList })
+    //       .then(redirect, showError)
+    //       .catch(alert);
+    //   }
+    //   $scope.guestList = [];
+    // };
 
     function alert(msg) {
       $scope.err = msg;
