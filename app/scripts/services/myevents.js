@@ -8,7 +8,7 @@
  * Factory in the eventAppApp.
  */
 angular.module('eventAppApp')
-  .factory('myEvents', function (Ref, $firebaseArray, myDate) {
+  .factory('myEvents', function (Ref, $firebaseArray) {
 
     //create an events firebaseArray that dependencies of this service will receive
     var events = {};
@@ -20,8 +20,8 @@ angular.module('eventAppApp')
         name: event.name,
         host: event.host,
         type: event.type,
-        startDate: myDate.dateToObject(event.startDate),
-        endDate: myDate.dateToObject(event.endDate),
+        startDate: event.startDate.getTime(),
+        endDate: event.endDate.getTime(),
         location: event.location,
         guests: event.guests
       });

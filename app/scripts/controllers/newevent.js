@@ -24,9 +24,9 @@ angular.module('eventAppApp')
     $scope.addGuest = function(guest) {
       // console.log(guest);
       $scope.newEvent.guests.push(guest);
-      console.log($scope.newEvent.guests);
-      $scope.eventGuest = '';
-      console.log($scope.events);
+      // console.log($scope.newEvent.guests);
+      $scope.newEvent.guest = '';
+      console.log($scope.newEvent.startDate.getTime());
     };
 
     //initialize google map with default options

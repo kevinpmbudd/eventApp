@@ -42,12 +42,12 @@ angular.module('eventAppApp')
   			}
   		};
 
-      if($scope.event.startDate) {
-        $scope.startDate = myDate.objectToDate($scope.event.startDate);
-      }
+      // if($scope.event.startDate) {
+      //   $scope.startDate = myDate.objectToDate($scope.event.startDate);
+      // }
 
-      if($scope.event.endDate) {
-        $scope.endDate = myDate.objectToDate($scope.event.endDate);
-      }
+      // if($scope.event.endDate) {
+      //   $scope.event.endDate = myDate.objectToDate($scope.event.endDate);
+      // }
   	});
   });
