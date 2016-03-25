@@ -22,7 +22,7 @@ function myCreateAccount() {
 	function myCreateAccountCtrl($scope, Auth, $location, $q, Ref, $timeout) {
 		$scope.createAccount = function(email, pass) {
 	      $scope.err = null;
-	        Auth.$createUser({email: email.trim(), password: pass.trim()})
+	      Auth.$createUser({email: email.trim(), password: pass.trim()})
 	          .then(function () {
 	            // authenticate so we have permission to write to Firebase
 	            return Auth.$authWithPassword({email: email, password: pass}, {rememberMe: true});
