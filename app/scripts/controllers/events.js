@@ -8,6 +8,6 @@
  * Controller of the eventAppApp
  */
 angular.module('eventAppApp')
-  .controller('EventsCtrl', function ($scope, Ref, $firebaseArray) {
-    $scope.events = $firebaseArray(Ref.child('events'));
+  .controller('EventsCtrl', function ($scope, myEvents) {
+    $scope.events = myEvents.list;
   });
