@@ -1,18 +1,18 @@
-'use strict';
+// 'use strict';
 
-describe('Service: myEvents', function () {
+// describe('Service: myEvents', function () {
 
-  // load the service's module
-  beforeEach(module('eventAppApp'));
+//   // load the service's module
+//   beforeEach(module('eventAppApp'));
 
-  // instantiate service
-  var myEvents;
-  beforeEach(inject(function (_myEvents_) {
-    myEvents = _myEvents_;
-  }));
+//   // instantiate service
+//   var myEvents;
+//   beforeEach(inject(function (_myEvents_) {
+//     myEvents = _myEvents_;
+//   }));
 
-  it('should do something', function () {
-    expect(!!myEvents).toBe(true);
-  });
+//   it('should do something', function () {
+//     expect(!!myEvents).toBe(true);
+//   });
 
-});
+// });

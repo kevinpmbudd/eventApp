@@ -1,22 +1,22 @@
-'use strict';
+// 'use strict';
 
-describe('Controller: EventsCtrl', function () {
+// describe('Controller: EventsCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('eventAppApp'));
+//   // load the controller's module
+//   beforeEach(module('eventAppApp'));
 
-  var EventsCtrl,
-    scope;
+//   var EventsCtrl,
+//     scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    EventsCtrl = $controller('EventsCtrl', {
-      $scope: scope
-    });
-  }));
+//   // Initialize the controller and a mock scope
+//   beforeEach(inject(function ($controller, $rootScope) {
+//     scope = $rootScope.$new();
+//     EventsCtrl = $controller('EventsCtrl', {
+//       $scope: scope
+//     });
+//   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
-});
+//   it('should attach a list of awesomeThings to the scope', function () {
+//     expect(scope.awesomeThings.length).toBe(3);
+//   });
+// });

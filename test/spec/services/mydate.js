@@ -1,18 +1,18 @@
-'use strict';
+// 'use strict';
 
-describe('Service: myDate', function () {
+// describe('Service: myDate', function () {
 
-  // load the service's module
-  beforeEach(module('eventAppApp'));
+//   // load the service's module
+//   beforeEach(module('eventAppApp'));
 
-  // instantiate service
-  var myDate;
-  beforeEach(inject(function (_myDate_) {
-    myDate = _myDate_;
-  }));
+//   // instantiate service
+//   var myDate;
+//   beforeEach(inject(function (_myDate_) {
+//     myDate = _myDate_;
+//   }));
 
-  it('should do something', function () {
-    expect(!!myDate).toBe(true);
-  });
+//   it('should do something', function () {
+//     expect(!!myDate).toBe(true);
+//   });
 
-});
+// });
