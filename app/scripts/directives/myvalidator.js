@@ -8,11 +8,36 @@
  */
 angular.module('eventAppApp')
   .directive('myValidator', function () {
+
+  	var letter = function(value) {
+  		console.log(value);
+  		var doesContainLetter = value.match(/[a-z]/i);
+  		// console.log(doesContainLetter);
+  		return doesContainLetter;
+  	};
+  	var number = function(value) {
+  		var doesContainNumber = value.match(/\d/g);
+  		return doesContainNumber;
+  	};
+
     return {
-      template: '<div></div>',
-      restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the myValidator directive');
+      restrict: 'A',
+      require: 'ngModel',
+      link: function(scope, element, attrs, ctrl) {
+
+        ctrl.$parsers.unshift(function(viewValue) {
+        	var containsLetter = letter(viewValue);
+        	var containsNumber = number(viewValue);
+        	// console.log(containsLetter);
+        	ctrl.$setValidity('containsLetter', containsLetter);
+        	ctrl.$setValidity('containsNumber', containsNumber);
+
+        	if(containsLetter && containsNumber) {
+        		return viewValue;
+        	} else {
+        		return undefined;
+        	}
+        });
       }
     };
   });

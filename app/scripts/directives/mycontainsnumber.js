@@ -7,6 +7,7 @@
  * # myContainsNumber
  */
 var NUMBER_REGEXP = /\d/g;
+var CHAR_REGEXP = /[a-z]/i
 angular.module('eventAppApp')
   .directive('myContainsNumber', function () {
     return {
@@ -25,6 +26,20 @@ angular.module('eventAppApp')
         	}
 
         	return false;
+        };
+
+        ctrl.$validators.containsChar = function(modelValue, viewValue) {
+          if(ctrl.$isEmpty(modelValue)) {
+            return true;
+          }
+
+          if(CHAR_REGEXP.test(viewValue)) {
+            console.log(viewValue);
+            console.log(ctrl);
+            return true;
+          }
+
+          return false;
         };
       }
     };
