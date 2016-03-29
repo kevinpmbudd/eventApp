@@ -28,11 +28,11 @@
     </div>
 
     <label for="accountPass">Password</label>
-    <input type="password" id="accountPass" class="form-control" placeholder="Password" required ng-minlength="8" name="pass" ng-model="accountPass" my-validator>
+    <input type="password" id="accountPass" class="form-control" placeholder="Password" name="pass" ng-model="accountPass" required my-validator>
      <div ng-show="accountForm.$submitted || accountForm.pass.$touched">
-      <span ng-show="accountForm.pass.$error.minlength">Password must be at least 8 Characters long.</span>
-      <span ng-show="accountForm.$error.containsLetter">Password must contain a letter</span>
-      <span ng-show="accountForm.$error.containsNumber">Password must contain a number</span>
+      <span ng-show="accountForm.pass.$error.longEnough">Password must be at least 8 Characters.</span>
+      <span ng-show="accountForm.pass.$error.containsLetter">Password must contain a letter.</span>
+      <span ng-show="accountForm.pass.$error.containsNumber">Password must contain a number.</span>
     </div>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="accountForm.$invalid" ng-cloak ng-click="createAccount(accountEmail, accountPass)">Join</button>

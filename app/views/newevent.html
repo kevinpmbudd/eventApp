@@ -25,7 +25,7 @@
     </div>
   </div>
   <div class="row date">
-    <div class="col-xs-12 col-sm-6 col-md-4 form-group has-feedback has-feedback-left">
+    <div class="col-xs-6 col-sm-6 col-md-4 form-group has-feedback has-feedback-left">
       <label class="control-label" for="startDate">What day does it start?</label>
       <input id="startDate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="newEvent.startDate" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="start date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" required/>
       <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
@@ -33,7 +33,7 @@
     <!-- <div class="col-md-2"> -->
       <!-- <uib-timepicker ng-model="startTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker> -->
     <!-- </div> -->
-    <div class="col-xs-12 col-sm-6 col-md-4 form-group has-feedback has-feedback-left">
+    <div class="col-xs-6 col-sm-6 col-md-4 form-group has-feedback has-feedback-left">
       <label class="control-label" for="endDate">What day does it end?</label>
       <input id="endDate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="newEvent.endDate" is-open="popup2.opened" datepicker-options="dateOptions" placeholder="end date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open2()"  required/>
       <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
@@ -51,7 +51,7 @@
       </datalist>
     </div>
     <div class="col-xs-1">
-      <button type="button" class="btn btn-xs btn-success" ng-disabled="!newEvent.guest" ng-click="addGuest(newEvent.guest)">
+      <button type="button" class="btn btn-xs btn-success new-guest-btn" ng-disabled="!newEvent.guest" ng-click="addGuest(newEvent.guest)">
         <span class="glyphicon glyphicon-plus"></span>
       </button>
       <!-- <button class="hide-button" ng-disabled="!eventGuest" ng-click="addGuest(eventGuest)"><i class="glyphicon glyphicon-plus add-guest text-left"></i></button> -->

@@ -10,15 +10,38 @@ angular.module('eventAppApp')
   .directive('myValidator', function () {
 
   	var letter = function(value) {
-  		console.log(value);
-  		if(value.match(/[a-z]/i))
-        return true;
+      var contains;
+  		if(value.match(/[a-z]/i)) {
+        contains = true;
+      }
+      else {
+        contains = false;
+      }
+
+      return contains;
   	};
 
   	var number = function(value) {
-  		if(value.match(/\d/g))
-  		  return true;
+      var contains;
+  		if(value.match(/\d/g)) {
+        contains = true;
+      } else {
+        contains = false;
+      }
+
+      return contains;
   	};
+
+    var length = function(value) {
+      var isLong;
+      if(value.length > 7) {
+        isLong = true;
+      } else {
+        isLong = false;
+      }
+
+      return isLong;
+    }
 
     return {
       restrict: 'A',
@@ -26,13 +49,15 @@ angular.module('eventAppApp')
       link: function(scope, element, attrs, ctrl) {
 
         ctrl.$parsers.unshift(function(viewValue) {
-        	var containsLetter = letter(viewValue);
-        	var containsNumber = number(viewValue);
+        	var hasLetter = letter(viewValue);
+        	var hasNumber = number(viewValue);
+          var hasLength = length(viewValue);
 
-        	ctrl.$setValidity('containsLetter', containsLetter);
-        	ctrl.$setValidity('containsNumber', containsNumber);
+        	ctrl.$setValidity('containsLetter', hasLetter);
+        	ctrl.$setValidity('containsNumber', hasNumber);
+          ctrl.$setValidity('longEnough', hasLength);
 
-        	if(containsLetter && containsNumber) {
+        	if(hasLetter && hasNumber && hasLength) {
         		return viewValue;
         	} else {
         		return undefined;
