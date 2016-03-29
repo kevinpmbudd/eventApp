@@ -80,13 +80,13 @@ angular.module('eventAppApp')
       .otherwise({redirectTo: '/'});
   }])
 
-  .config(function(uiGmapGoogleMapApiProvider) {
+  .config(['uiGmapGoogleMapApiProvider', function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
           key: 'AIzaSyC9a73erwpM4HAX7Jn-YnYlnGXB5WC3wXQ',
           v: '3.23',
           libraries: 'places'
       });
-  })
+  }])
 
   /**
    * Apply some route security. Any route's resolve method can reject the promise with
@@ -106,8 +106,6 @@ angular.module('eventAppApp')
           $location.path(loginRedirectPath);
         }
       });
-
-      $templateCache.put('window.tpl.html', '<div ng-controller="WindowCtrl" ng-init="showPlaceDetails(parameter)">{{place.name}}</div>');
 
       function check(user) {
         if( !user && authRequired($location.path()) ) {

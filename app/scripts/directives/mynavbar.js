@@ -24,25 +24,25 @@ function myNavbar() {
 
     $scope.auth.$onAuth(function(authData) {
       $scope.authData = authData;
-      setNavbarGreetingName($scope.authData);
+      // setNavbarGreetingName($scope.authData);
     });
 
     $scope.passwordLogin = function(email, pass) {
       $scope.err = null;
       Auth.$authWithPassword({ email: email, password: pass }, { rememberMe: true })
-        .then(setNavbarGreetingName)
+        // .then(setNavbarGreetingName)
         .then(redirect, showError);
     };
     $scope.logout = function() {
-    	Auth.$unauth();
-    	$location.path('/events');
+      Auth.$unauth();
+      $location.path('/events');
     };
 
-    function setNavbarGreetingName(user) {
-      if(user) {
-        $scope.profile = $firebaseObject(Ref.child('users').child(user.uid));
-      }
-    }
+    // function setNavbarGreetingName(user) {
+    //   if(user) {
+    //     $scope.profile = $firebaseObject(Ref.child('users').child(user.uid));
+    //   }
+    // }
 
     function redirect() {
       $location.path('/events');

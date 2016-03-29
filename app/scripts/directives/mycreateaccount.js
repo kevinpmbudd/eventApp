@@ -39,7 +39,6 @@ function myCreateAccount() {
 	            }
 	            else {
 	              def.resolve(ref);
-	              $scope.$emit('setName', $scope.firstName);
 	            }
 	          });
 	        });
