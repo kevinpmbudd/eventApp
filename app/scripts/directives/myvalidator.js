@@ -11,13 +11,13 @@ angular.module('eventAppApp')
 
   	var letter = function(value) {
   		console.log(value);
-  		var doesContainLetter = value.match(/[a-z]/i);
-  		// console.log(doesContainLetter);
-  		return doesContainLetter;
+  		if(value.match(/[a-z]/i))
+        return true;
   	};
+
   	var number = function(value) {
-  		var doesContainNumber = value.match(/\d/g);
-  		return doesContainNumber;
+  		if(value.match(/\d/g))
+  		  return true;
   	};
 
     return {
@@ -28,7 +28,7 @@ angular.module('eventAppApp')
         ctrl.$parsers.unshift(function(viewValue) {
         	var containsLetter = letter(viewValue);
         	var containsNumber = number(viewValue);
-        	// console.log(containsLetter);
+
         	ctrl.$setValidity('containsLetter', containsLetter);
         	ctrl.$setValidity('containsNumber', containsNumber);
 

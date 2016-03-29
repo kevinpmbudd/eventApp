@@ -8,14 +8,14 @@
         <label for="accountFirstName">First Name</label>
         <input type="text" id="accountFirstName" class="form-control" placeholder="First Name" required autocomplete="given-name" name="fname" ng-model="firstName" autofocus>
         <div ng-show="accountForm.$submitted || accountForm.fname.$touched">
-          <span ng-show="accountForm.email.$error.required">Please enter your First Name.</span>
+          <span ng-show="accountForm.fname.$error.required">Please enter your First Name.</span>
         </div>
       </div>
       <div class="col-xs-6">
         <label for="accountLastName">Last Name</label>
         <input type="text" id="accountLastName" class="form-control" placeholder="Last Name" required autocomplete="family-name" name="lname" ng-model="lastName">
         <div ng-show="accountForm.$submitted || accountForm.lname.$touched">
-          <span ng-show="accountForm.email.$error.required">Please enter your Last Name.</span>
+          <span ng-show="accountForm.lname.$error.required">Please enter your Last Name.</span>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
 
     <label for="accountPass">Password</label>
     <input type="password" id="accountPass" class="form-control" placeholder="Password" required ng-minlength="8" name="pass" ng-model="accountPass" my-validator>
-     <div ng-show="accountForm.pass.$dirty || accountForm.pass.$invalid">
+     <div ng-show="accountForm.$submitted || accountForm.pass.$touched">
       <span ng-show="accountForm.pass.$error.minlength">Password must be at least 8 Characters long.</span>
       <span ng-show="accountForm.$error.containsLetter">Password must contain a letter</span>
       <span ng-show="accountForm.$error.containsNumber">Password must contain a number</span>
