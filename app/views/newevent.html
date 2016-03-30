@@ -8,11 +8,11 @@
       <input type="name" id="eventName" class="form-control" placeholder="event name" ng-model="newEvent.name" name="eventName" required>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <label for="eventHost">Who's hosting this event?</label>
+      <label for="eventHost">Who's hosting?</label>
       <input type="name" id="eventHost" class="form-control" placeholder="event host" ng-model="newEvent.host" name="eventHost" required>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <label for="eventType">What type of event is this?</label>
+      <label for="eventType">What type of event is it?</label>
       <input id="eventType" list="types" type="text" placeholder="event type" class="form-control" ng-model="newEvent.type" name="eventType" required/>
       <datalist id="types">
         <option value="Birthday">
@@ -43,19 +43,18 @@
     </div> -->
   </div>
   <div class="row">
-    <div class="col-xs-11">
+    <div class="col-xs-12">
       <label for="eventGuests">Who?</label>
       <input id="eventGuests" list="guests" type="text" placeholder="event guests" class="form-control" ng-model="newEvent.guest" name="eventGuest" />
       <datalist id="guests">
         <option ng-repeat="user in users" value="{{user.fname + ' ' + user.lname}}">
       </datalist>
-    </div>
-    <div class="col-xs-1">
       <button type="button" class="btn btn-xs btn-success new-guest-btn" ng-disabled="!newEvent.guest" ng-click="addGuest(newEvent.guest)">
-        <span class="glyphicon glyphicon-plus"></span>
+        <span class="glyphicon glyphicon-plus plus-icon"></span>
       </button>
-      <!-- <button class="hide-button" ng-disabled="!eventGuest" ng-click="addGuest(eventGuest)"><i class="glyphicon glyphicon-plus add-guest text-left"></i></button> -->
     </div>
+      <!-- <button class="hide-button" ng-disabled="!eventGuest" ng-click="addGuest(eventGuest)"><i class="glyphicon glyphicon-plus add-guest text-left"></i></button> -->
+
   </div>
   <!-- <label for="eventGuestSearch">Who's attending this event?</label>
     <div  angucomplete-alt id="eventGuest" placeholder="enter a guest name" pause="300" selected-object="selectedPerson" local-data="users" local-search="localSearch" title-field="fname,lname" minlength="1" input-class="form-control form-control-small" match-class="highlight" clear-selected="true">

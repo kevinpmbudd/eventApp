@@ -150,7 +150,12 @@ nav {
 .new-guest-btn {
   position: absolute;
   top: 27px;
+  right: 17px;
   font-size: 1.7em;
+  z-index: 2;
+}
+input::-webkit-calendar-picker-indicator {
+  display: none;
 }
 
 .full button span {
