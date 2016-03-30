@@ -1,7 +1,9 @@
 <div class="jumbotron text-center">
 	<h1>{{event.name}}</h1>
 	<h5>by: {{event.host}}</h5>
-  <p>{{event.startDate  | date:'MMMM-dd-yyyy'}} to {{event.endDate  | date:'MMMM-dd-yyyy'}}</p>
+  <p>{{event.startDate  | date:'medium'}}</p>
+  <p>to</p>
+  <p>{{event.endDate  | date:'medium'}}</p>
 
 	<div class="dropdown text-left">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

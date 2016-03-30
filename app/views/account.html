@@ -1,60 +1,57 @@
-<div class="row">
-
+<form class="form-profile" name="form">
   <h1 class="jumbotron text-center">PROFILE</h1>
-  <div class="">
-  <form role="form">
-    <div class="row">
-      <p class="col-xs-6 form-group">
-        <label>First Name:</label>
-        <input type="text" name="fname" ng-model="profile.fname" class="form-control" />
-      </p>
+  <div class="row">
+    <p class="col-xs-6">
+      <label>First Name:</label>
+      <input type="text" name="fname" ng-model="profile.fname" class="form-control" />
+    </p>
 
-      <p class="col-xs-6 form-group">
-        <label>Last Name:</label>
-        <input type="text" name="lname" ng-model="profile.lname" class="form-control" />
-      </p>
-    </div>
-
-    <div class="row">
-      <p class="col-xs-12 col-sm-6 form-group">
-        <label>Job Title:</label>
-        <input type="text" name="jobTitle" ng-model="profile.jobTitle" class="form-control" />
-      </p>
-
-      <p class="col-xs-12 col-sm-6 form-group">
-        <label>Employer:</label>
-        <input type="text" name="employer" ng-model="profile.employer" class="form-control" />
-      </p>
-    </div>
-
-    <div class="row">
-      <p class="col-xs-6 form-group">
-        <label>Birthday:</label>
-        <!-- <input type="date" name="birthday" ng-model="birthday" ng-model-options="{ updateOn: 'blur' }" ng-change="update(birthday)" class="form-control" /> -->
-        <input id="birthday" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="birthday" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="Enter your birthday" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" ng-change="update()" required/>
-        <i class="glyphicon glyphicon-calendar form-control-feedback calendar-profile-icon"></i>
-      </p>
-
-      <p class="col-xs-6 form-group">
-        <label>Survival Skill:</label>
-        <input type="text" name="survivalSkill" ng-model="profile.skill" class="form-control" />
-      </p>
-    </div>
-
-    <div class="row">
-      <p class="col-xs-6 form-group">
-        <label>Account ID</label>
-        <br />{{user.uid}}
-      </p>
-
-      <p class="col-xs-6 form-group">
-        <label>Email:</label>
-        <br />{{profile.email}}
-      </p>
-    </div>
-  </form>
+    <p class="col-xs-6">
+      <label>Last Name:</label>
+      <input type="text" name="lname" ng-model="profile.lname" class="form-control" />
+    </p>
   </div>
-</div>
+
+  <div class="row">
+    <p class="col-xs-12 col-sm-6">
+      <label>Job Title:</label>
+      <input type="text" name="jobTitle" ng-model="profile.jobTitle" class="form-control" />
+    </p>
+
+    <p class="col-xs-12 col-sm-6">
+      <label>Employer:</label>
+      <input type="text" name="employer" ng-model="profile.employer" class="form-control" />
+    </p>
+  </div>
+
+  <div class="row">
+    <p class="col-xs-6">
+      <label>Birthday:</label>
+      <!-- <input type="date" name="birthday" ng-model="birthday" ng-model-options="{ updateOn: 'blur' }" ng-change="update(birthday)" class="form-control" /> -->
+      <input id="birthday" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="birthday" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="Enter your birthday" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" ng-change="update()" required/>
+      <i class="glyphicon glyphicon-calendar form-control-feedback calendar-profile-icon"></i>
+    </p>
+
+    <p class="col-xs-6">
+      <label>Survival Skill:</label>
+      <input type="text" name="survivalSkill" ng-model="profile.skill" class="form-control" />
+    </p>
+  </div>
+
+  <div class="row">
+    <p class="col-xs-6">
+      <label>Account ID</label>
+      <br />{{user.uid}}
+    </p>
+
+    <p class="col-xs-6">
+      <label>Email:</label>
+      <br />{{profile.email}}
+    </p>
+  </div>
+</form>
+
+
 
 <!-- <div class="col-md-4">
   <p>{{position.coords.latitude + " " + position.coords.longitude}}</p>

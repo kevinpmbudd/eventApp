@@ -120,17 +120,19 @@ angular.module('eventAppApp')
       $scope.dt = null;
     };
 
-    // $scope.inlineOptions = {
-    //   customClass: getDayClass,
-    //   minDate: new Date(),
-    //   showWeeks: true
-    // };
-
     $scope.dateOptions = {
       dateDisabled: disabled,
       formatYear: 'yy',
       maxDate: new Date(2020, 5, 22),
       minDate: new Date(),
+      startingDay: 1
+    };
+
+    $scope.dateOptions2 = {
+      dateDisabled: disabled,
+      formatYear: 'yy',
+      maxDate: new Date(2020, 5, 22),
+      minDate: $scope.startDate,
       startingDay: 1
     };
 
@@ -161,8 +163,8 @@ angular.module('eventAppApp')
       opened: false
     };
 
-    $scope.startTime = new Date();
-    $scope.endTime = new Date();
+    // $scope.startTime = new Date();
+    // $scope.endTime = new Date();
 
     $scope.hstep = 1;
     $scope.mstep = 15;
