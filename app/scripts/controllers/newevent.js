@@ -8,14 +8,14 @@
  * Controller of the eventAppApp
  */
 angular.module('eventAppApp')
-  .controller('NeweventCtrl', function($scope, Ref, $firebaseArray, $timeout, $location, myEvents) {
+  .controller('NeweventCtrl', function($scope, Ref, $firebaseArray, $timeout, $location, myEvents, uiGmapGoogleMapApi) {
     //$scope.events = myEvents.list;
     $scope.newEvent = {};
 
     $scope.addEvent = function(event) {
       console.log(event);
       myEvents.add(event);
-      $location.path('/events');
+      redirect();
     };
 
     $scope.users = $firebaseArray(Ref.child('users'));
@@ -24,59 +24,77 @@ angular.module('eventAppApp')
     $scope.addGuest = function(guest) {
       $scope.newEvent.guests.push(guest);
       $scope.newEvent.guest = '';
-      console.log($scope.newEvent.startDate.getTime());
     };
+
+    var autocomplete;
+
+    var updateMarker = function() {
+      $scope.newEvent.location = {
+        latitude: autocomplete.getPlace().geometry.location.lat(),
+        longitude: autocomplete.getPlace().geometry.location.lng()
+      };
+    };
+
+    uiGmapGoogleMapApi.then(function(maps) {
+      var input = document.getElementById('search-box');
+      var options = {};
+
+      autocomplete = new maps.places.Autocomplete(input, options);
+      autocomplete.addListener('place_changed', updateMarker);
+    });
+
+
 
     //initialize google map with default options
-    $scope.map = {
-      control: {},
-      center: {
-        latitude: 39.85,
-        longitude: -98.55
-      },
-      zoom: 3
-    };
-    //initialize a google maps marker with default options
-    $scope.marker = {
-      id: 0,
-      coords: {
-        latitude: 0,
-        longitude: 0
-      }
-    };
+    // $scope.map = {
+    //   control: {},
+    //   center: {
+    //     latitude: 39.85,
+    //     longitude: -98.55
+    //   },
+    //   zoom: 3
+    // };
+    // //initialize a google maps marker with default options
+    // $scope.marker = {
+    //   id: 0,
+    //   coords: {
+    //     latitude: 0,
+    //     longitude: 0
+    //   }
+    // };
 
-    var events = {
-      places_changed: function(searchBox) {
-        //grab the selected item from the searchbox
-        var place = searchBox.getPlaces();
-        if (place.length === 0) {
-          return;
-        }
-        //re center the map on the selected location
-        $scope.map = {
-          center: {
-            latitude: place[0].geometry.location.lat(),
-            longitude: place[0].geometry.location.lng()
-          },
-          zoom: 18
-        };
-        //add marker on the selected spot
-        $scope.marker = {
-          id: 0,
-          coords: {
-            latitude: place[0].geometry.location.lat(),
-            longitude: place[0].geometry.location.lng()
-          }
-        };
+    // var events = {
+    //   places_changed: function(searchBox) {
+    //     //grab the selected item from the searchbox
+    //     var place = searchBox.getPlaces();
+    //     if (place.length === 0) {
+    //       return;
+    //     }
+    //     //re center the map on the selected location
+    //     $scope.map = {
+    //       center: {
+    //         latitude: place[0].geometry.location.lat(),
+    //         longitude: place[0].geometry.location.lng()
+    //       },
+    //       zoom: 18
+    //     };
+    //     //add marker on the selected spot
+    //     $scope.marker = {
+    //       id: 0,
+    //       coords: {
+    //         latitude: place[0].geometry.location.lat(),
+    //         longitude: place[0].geometry.location.lng()
+    //       }
+    //     };
 
-        $scope.newEvent.location = {
-          latitude: place[0].geometry.location.lat(),
-          longitude: place[0].geometry.location.lng()
-        };
-      }
-    };
-    //initialize map searchbox with options
-    $scope.searchbox = { template: 'searchbox.tpl.html', events: events, parentdiv: 'eventLocation' };
+    //     $scope.newEvent.location = {
+    //       latitude: place[0].geometry.location.lat(),
+    //       longitude: place[0].geometry.location.lng()
+    //     };
+    //   }
+    // };
+    // //initialize map searchbox with options
+    // $scope.searchbox = { template: 'searchbox.tpl.html', events: events, parentdiv: 'eventLocation' };
 
     function alert(msg) {
       $scope.err = msg;
