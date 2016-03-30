@@ -15,6 +15,7 @@ angular.module('eventAppApp')
     $scope.addEvent = function(event) {
       console.log(event);
       myEvents.add(event);
+      $location.path('/events');
     };
 
     $scope.users = $firebaseArray(Ref.child('users'));
@@ -109,7 +110,7 @@ angular.module('eventAppApp')
     };
 
     $scope.setMinDate = function() {
-      $scope.dateOptions.minDate = $scope.newEvent.startDate;
+      $scope.dateOptions.minDate = $scope.newEvent.startDateTime;
     };
 
     $scope.open1 = function() {

@@ -20,10 +20,11 @@ angular.module('eventAppApp')
         name: event.name,
         host: event.host,
         type: event.type,
-        startDate: event.startDate.getTime(),
-        endDate: event.endDate.getTime(),
+        startDateTime: event.startDateTime.getTime(),
+        endDateTime: event.endDateTime.getTime(),
         location: event.location,
-        guests: event.guests
+        guests: event.guests,
+        message: event.message
       });
     };
 
