@@ -1,7 +1,7 @@
-<div class="row-fluid">
-<div class="col-md-8">
-  <h3 class="text-center">Profile</h3>
+<div class="row">
 
+  <h1 class="jumbotron text-center">PROFILE</h1>
+  <div class="">
   <form role="form">
     <div class="row">
       <p class="col-xs-6 form-group">
@@ -30,7 +30,9 @@
     <div class="row">
       <p class="col-xs-6 form-group">
         <label>Birthday:</label>
-        <input type="date" name="birthday" ng-model="birthday" ng-model-options="{ updateOn: 'blur' }" ng-change="update(birthday)" class="form-control" />
+        <!-- <input type="date" name="birthday" ng-model="birthday" ng-model-options="{ updateOn: 'blur' }" ng-change="update(birthday)" class="form-control" /> -->
+        <input id="birthday" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="birthday" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="Enter your birthday" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" ng-change="update()" required/>
+        <i class="glyphicon glyphicon-calendar form-control-feedback calendar-profile-icon"></i>
       </p>
 
       <p class="col-xs-6 form-group">
@@ -51,10 +53,7 @@
       </p>
     </div>
   </form>
-
-  <!-- <p>
-    <button role="button" ng-click="logout()" class="btn btn-danger">Log Out</button>
-  </p> -->
+  </div>
 </div>
 
 <!-- <div class="col-md-4">
@@ -106,5 +105,5 @@
 </div>
 
 </div> -->
-<p class="clearfix"></p>
-<div ng-repeat="message in messages" class="alert alert-{{message.type}}">{{message.text}}</div>
+<!-- <p class="clearfix"></p>
+<div ng-repeat="message in messages" class="alert alert-{{message.type}}">{{message.text}}</div> -->

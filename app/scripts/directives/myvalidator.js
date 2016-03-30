@@ -48,6 +48,10 @@ angular.module('eventAppApp')
       require: 'ngModel',
       link: function(scope, element, attrs, ctrl) {
 
+        ctrl.$setValidity('containsLetter', false);
+        ctrl.$setValidity('containsNumber', false);
+        ctrl.$setValidity('longEnough', false);
+
         ctrl.$parsers.unshift(function(viewValue) {
         	var hasLetter = letter(viewValue);
         	var hasNumber = number(viewValue);

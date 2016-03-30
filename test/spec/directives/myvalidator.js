@@ -12,9 +12,9 @@ describe('Directive: myValidator', function () {
   beforeEach(inject(function ($compile, $rootScope) {
     $scope = $rootScope.$new();
     element = angular.element(
-      '<form name="form><input type="password" id="accountPass" class="form-control"'
-      + 'placeholder="Password" ng-model="accountPass" ng-minlength="8"'
-      + 'name="accountPass" my-validator required></form>'
+      '<form name="form"><input type="password" id="accountPass" class="form-control"'
+      + ' placeholder="Password" ng-model="accountPass"'
+      + ' name="pass" my-validator required></form>'
     );
     $scope.model = { accountPass: null };
     $compile(element)($scope);
@@ -22,36 +22,23 @@ describe('Directive: myValidator', function () {
     form = $scope.form;
   }));
 
-  // describe("incompletePassword", function() {
-
-  //   it('should be defined and initially set valid to false', function() {
-  //     expect(form.$error.incompletePassword.$valid).toBeFalsy();
-  //   });
-
-  //   it('should be false when the user has met all custom password requirements', function() {
-  //     form.accountPass.$setViewValue("1ABCDEF.");
-  //     $scope.digest();
-  //     expect(form.$error.containsNumber).toBeFalsy();
-  //   });
-
-  // });
-
   describe("containsNumber", function() {
 
     it('should be defined and initially set valid to false', function() {
-      expect(form.$error.containsNumber.$valid).toBeFalsy();
+      expect(form.pass.$error.containsNumber.$valid).toBeFalsy();
     });
 
     it('should be set to invalid if user enters a password with no numbers' ,function() {
-      form.accountPass.$setViewValue("ABCDEFGH");
+      form.pass.$setViewValue("ABCDEFGH");
+      console.log($scope);
       $scope.digest();
-      expect(form.$error.containsNumber.$valid).toBeFalsy();
+      expect(form.pass.$error.containsNumber.$valid).toBeFalsy();
     });
 
     it('should be false when the user has entered at least one number in the password', function() {
-      form.accountPass.$setViewValue("1ABCDEFG");
+      form.pass.$setViewValue("1ABCDEFG");
       $scope.digest();
-      expect(form.$error.containsNumber).toBeFalsy();
+      expect(form.pass.$error.containsNumber).toBeFalsy();
     });
   });
 

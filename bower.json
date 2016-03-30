@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "mockfirebase": "0.11.0",
-    "angular-mocks": "^1.3.0"
+    "angular-mocks": "^1.5.4"
   },
   "appPath": "app",
   "moduleName": "eventAppApp",

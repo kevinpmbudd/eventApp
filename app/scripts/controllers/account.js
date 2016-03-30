@@ -11,11 +11,14 @@ angular.module('eventAppApp')
     $scope.user = user;
     $scope.logout = function() { Auth.$unauth(); };
     $scope.messages = [];
+
     var profile = $firebaseObject(Ref.child('users/'+user.uid));
     profile.$bindTo($scope, 'profile');
 
-    $scope.update = function (date) {
-      profile.birthday = myDate.dateToObject(date);
+    $scope.update = function () {
+      console.log($scope.birthday.getTime());
+      profile.birthday = $scope.birthday.getTime();
+      // profile.birthday = myDate.dateToObject(date);
       profile.$save().then(function(ref) {
         console.log('success', ref);
       }, function (error) {
@@ -26,10 +29,51 @@ angular.module('eventAppApp')
     profile.$loaded()
     .then(function(data) {
       // $scope.birthday = new Date(profile.bdYear, profile.bdMonth - 1, profile.bdDay);
-      if ($scope.birthday) {
-        $scope.birthday = myDate.objectToDate(profile.birthday);
+      if (profile.birthday) {
+        $scope.birthday = new Date(profile.birthday);
+      } else {
+        $scope.birthday = new Date();
       }
     });
+
+    $scope.today = function() {
+      $scope.dt = new Date();
+    };
+
+    $scope.today();
+
+    $scope.clear = function() {
+      $scope.dt = null;
+    };
+
+    $scope.dateOptions = {
+      dateDisabled: disabled,
+      formatYear: 'yy',
+      maxDate: new Date(2020, 5, 22),
+      minDate: new Date(1900, 1, 1),
+      startingDay: 1
+    };
+
+    // Disable weekend selection
+    function disabled(data) {
+      var date = data.date,
+        mode = data.mode;
+      return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+    }
+
+    $scope.open1 = function() {
+      $scope.popup1.opened = true;
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.popup1 = {
+      opened: false
+    };
+
+    profile.birthday = new Date();
 
     // $scope.changePassword = function(oldPass, newPass, confirm) {
     //   $scope.err = null;
