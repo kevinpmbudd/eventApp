@@ -28,7 +28,7 @@ describe('Directive: myValidator', function () {
       expect(form.pass.$error.containsNumber.$valid).toBeFalsy();
     });
 
-    it('should be set to invalid if user enters a password with no numbers' ,function() {
+    it('should be set to invalid if user enters a password with no numbers' , function() {
       form.pass.$setViewValue("ABCDEFGH");
       console.log($scope);
       $scope.digest();
@@ -41,5 +41,4 @@ describe('Directive: myValidator', function () {
       expect(form.pass.$error.containsNumber).toBeFalsy();
     });
   });
-
 });

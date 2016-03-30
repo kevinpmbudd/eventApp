@@ -7,7 +7,7 @@
  * Provides rudimentary account management functions.
  */
 angular.module('eventAppApp')
-  .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout, myDate) {
+  .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout) {
     $scope.user = user;
     $scope.logout = function() { Auth.$unauth(); };
     $scope.messages = [];
@@ -28,7 +28,6 @@ angular.module('eventAppApp')
 
     profile.$loaded()
     .then(function(data) {
-      // $scope.birthday = new Date(profile.bdYear, profile.bdMonth - 1, profile.bdDay);
       if (profile.birthday) {
         $scope.birthday = new Date(profile.birthday);
       } else {
@@ -74,33 +73,6 @@ angular.module('eventAppApp')
     };
 
     profile.birthday = new Date();
-
-    // $scope.changePassword = function(oldPass, newPass, confirm) {
-    //   $scope.err = null;
-    //   if( !oldPass || !newPass ) {
-    //     error('Please enter all fields');
-    //   }
-    //   else if( newPass !== confirm ) {
-    //     error('Passwords do not match');
-    //   }
-    //   else {
-    //     Auth.$changePassword({email: profile.email, oldPassword: oldPass, newPassword: newPass})
-    //       .then(function() {
-    //         success('Password changed');
-    //       }, error);
-    //   }
-    // };
-
-    // $scope.changeEmail = function(pass, newEmail) {
-    //   $scope.err = null;
-    //   Auth.$changeEmail({password: pass, newEmail: newEmail, oldEmail: profile.email})
-    //     .then(function() {
-    //       profile.email = newEmail;
-    //       profile.$save();
-    //       success('Email changed');
-    //     })
-    //     .catch(error);
-    // };
 
     function error(err) {
       alert(err, 'danger');

@@ -19,12 +19,9 @@ angular.module('eventAppApp')
 
     $scope.users = $firebaseArray(Ref.child('users'));
     $scope.newEvent.guests = [];
-    // var location;
 
     $scope.addGuest = function(guest) {
-      // console.log(guest);
       $scope.newEvent.guests.push(guest);
-      // console.log($scope.newEvent.guests);
       $scope.newEvent.guest = '';
       console.log($scope.newEvent.startDate.getTime());
     };
@@ -80,22 +77,6 @@ angular.module('eventAppApp')
     //initialize map searchbox with options
     $scope.searchbox = { template: 'searchbox.tpl.html', events: events, parentdiv: 'eventLocation' };
 
-    // $scope.addEvent = function(name, host) {
-    //   if (name && host) {
-    //     $scope.events.$add({
-    //       name: name,
-    //       host: host,
-    //       type: $scope.eventType,
-    //       startDate: myDate.dateToObject($scope.startDate),
-    //       endDate: myDate.dateToObject($scope.endDate),
-    //       location: location,
-    //       guests: $scope.guestList })
-    //       .then(redirect, showError)
-    //       .catch(alert);
-    //   }
-    //   $scope.guestList = [];
-    // };
-
     function alert(msg) {
       $scope.err = msg;
       $timeout(function() {
@@ -121,27 +102,15 @@ angular.module('eventAppApp')
     };
 
     $scope.dateOptions = {
-      dateDisabled: disabled,
       formatYear: 'yy',
       maxDate: new Date(2020, 5, 22),
       minDate: new Date(),
       startingDay: 1
     };
 
-    $scope.dateOptions2 = {
-      dateDisabled: disabled,
-      formatYear: 'yy',
-      maxDate: new Date(2020, 5, 22),
-      minDate: $scope.startDate,
-      startingDay: 1
+    $scope.setMinDate = function() {
+      $scope.dateOptions.minDate = $scope.newEvent.startDate;
     };
-
-    // Disable weekend selection
-    function disabled(data) {
-      var date = data.date,
-        mode = data.mode;
-      return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-    }
 
     $scope.open1 = function() {
       $scope.popup1.opened = true;
@@ -161,37 +130,6 @@ angular.module('eventAppApp')
 
     $scope.popup2 = {
       opened: false
-    };
-
-    // $scope.startTime = new Date();
-    // $scope.endTime = new Date();
-
-    $scope.hstep = 1;
-    $scope.mstep = 15;
-
-    $scope.options = {
-      hstep: [1, 2, 3],
-      mstep: [1, 5, 10, 15, 25, 30]
-    };
-
-    $scope.ismeridian = true;
-    $scope.toggleMode = function() {
-      $scope.ismeridian = !$scope.ismeridian;
-    };
-
-    $scope.update = function() {
-      var d = new Date();
-      d.setHours(14);
-      d.setMinutes(0);
-      $scope.mytime = d;
-    };
-
-    $scope.changed = function() {
-      // $log.log('Time changed to: ' + $scope.mytime);
-    };
-
-    $scope.clear = function() {
-      $scope.mytime = null;
     };
 
   });
