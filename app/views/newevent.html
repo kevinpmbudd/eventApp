@@ -1,14 +1,20 @@
-<form novalidate name="form" class="form-new-event css-form">
+<form novalidate name="eventForm" class="form-new-event css-form">
   <h1 class="jumbotron text-center">NEW EVENT</h1>
   <!-- <p ng-show="err" class="bg-danger">{{err}}</p> -->
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <label for="eventName">What is this event called?</label>
+      <label for="eventName">What's this event called?</label>
       <input type="name" id="eventName" class="form-control" placeholder="event name" ng-model="newEvent.name" name="eventName" required>
+      <div ng-show="eventForm.$submitted || eventForm.eventName.$touched">
+          <span class="validate-error" ng-show="eventForm.eventName.$error.required">Event name required.</span>
+      </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <label for="eventHost">Who's hosting?</label>
       <input type="name" id="eventHost" class="form-control" placeholder="event host" ng-model="newEvent.host" name="eventHost" required>
+      <div ng-show="eventForm.$submitted || eventForm.eventHost.$touched">
+          <span class="validate-error" ng-show="eventForm.eventHost.$error.required">Event host required.</span>
+      </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <label for="eventType">What type of event is it?</label>
@@ -21,31 +27,12 @@
                 <option value="Meetup">
                   <option value="Potluck">
       </datalist>
-    </div>
-  </div>
-  <div class="row date">
-    <div class="col-xs-6 col-sm-3 col-md-3 form-group has-feedback has-feedback-left">
-      <label class="control-label" for="startDate">What day does it start?</label>
-      <input id="startDate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="newEvent.startDateTime" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="start date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" ng-change="setMinDate()" required/>
-      <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
-    </div>
-    <div class="col-xs-6 col-sm-3 col-md-4">
-      <label class="control-label" for="startDate">What time?</label>
-      <input type="time" class="time-box form-control" ng-model="newEvent.startDateTime" required>
-    </div>
-    <div class="col-xs-6 col-sm-3 col-md-4 form-group has-feedback has-feedback-left">
-      <label class="control-label" for="endDate">What day does it end?</label>
-      <input id="endDate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="newEvent.endDateTime" is-open="popup2.opened" datepicker-options="dateOptions" placeholder="end date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open2()"  required/>
-      <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
-    </div>
-    <div class="col-xs-6 col-sm-3 col-md-4">
-      <label class="control-label" for="startDate">What time?</label>
-      <input type="time" class="time-box form-control" ng-model="newEvent.endDateTime" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <label for="eventGuests">Who?</label>
+      <div ng-show="eventForm.$submitted || eventForm.eventType.$touched">
+          <span class="validate-error" ng-show="eventForm.eventType.$error.required">Event type required.</span>
+      </div>
+      </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <label for="eventGuests">Who's going?</label>
       <input id="eventGuests" list="guests" type="text" placeholder="event guests" class="form-control" ng-model="newEvent.guest" name="eventGuest" />
       <datalist id="guests">
         <option ng-repeat="user in users" value="{{user.fname + ' ' + user.lname}}">
@@ -54,16 +41,36 @@
         <span class="glyphicon glyphicon-plus plus-icon"></span>
       </button>
     </div>
+    <div class="col-xs-12 col-md-8">
+      <label for="eventLocation">Where's it happening?</label>
+      <input id="search-box" class="form-control" type="text"></input>
+    </div>
+  </div>
+  <div class="row date">
+    <div class="col-xs-6 col-sm-3 form-group has-feedback has-feedback-left">
+      <label class="control-label" for="startDate">What day does it start?</label>
+      <input id="startDate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="newEvent.startDateTime" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="start date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" ng-change="setMinDate()" required/>
+      <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <label class="control-label" for="startDate">What time?</label>
+      <input type="time" class="time-box form-control" ng-model="newEvent.startDateTime" required>
+    </div>
+    <div class="col-xs-6 col-sm-3 form-group has-feedback has-feedback-left">
+      <label class="control-label" for="endDate">What day does it end?</label>
+      <input id="endDate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="newEvent.endDateTime" is-open="popup2.opened" datepicker-options="dateOptions" placeholder="end date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open2()"  required/>
+      <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <label class="control-label" for="startDate">What time?</label>
+      <input type="time" class="time-box form-control" ng-model="newEvent.endDateTime" required>
+    </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <label for="eventMessage">Include a message to your guests.</label>
+      <label for="eventMessage">Include an optional message to your guests</label>
       <textarea id="eventMessage" class="form-control" name="message" ng-model="newEvent.message" required></textarea>
     </div>
-  </div>
-  <label for="eventLocation">Where is it happening?</label>
-  <div id="eventLocation">
-    <input id="search-box" class="form-control" type="text"></input>
   </div>
   <!-- <script type="text/ng-template" id="searchbox.tpl.html">
     <input type="text" class="map-search-box" placeholder="event location">
@@ -74,5 +81,5 @@
     <ui-gmap-marker coords="marker.coords" idKey="marker.id">
     </ui-gmap-marker>
   </ui-gmap-google-map> -->
-  <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid" ng-cloak ng-click="addEvent(newEvent)">Party On Wayne</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="eventForm.$invalid" ng-cloak ng-click="addEvent(newEvent)">Create</button>
 </form>

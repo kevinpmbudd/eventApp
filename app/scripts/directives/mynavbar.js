@@ -30,19 +30,12 @@ function myNavbar() {
     $scope.passwordLogin = function(email, pass) {
       $scope.err = null;
       Auth.$authWithPassword({ email: email, password: pass }, { rememberMe: true })
-        // .then(setNavbarGreetingName)
         .then(redirect, showError);
     };
     $scope.logout = function() {
       Auth.$unauth();
-      $location.path('/events');
+      $location.path('/');
     };
-
-    // function setNavbarGreetingName(user) {
-    //   if(user) {
-    //     $scope.profile = $firebaseObject(Ref.child('users').child(user.uid));
-    //   }
-    // }
 
     function redirect() {
       $location.path('/events');
