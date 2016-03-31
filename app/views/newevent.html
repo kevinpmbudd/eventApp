@@ -33,11 +33,23 @@
       </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <label for="eventGuests">Who's going?</label>
-      <input id="eventGuests" list="guests" type="text" placeholder="event guests" class="form-control" ng-model="newEvent.guest" name="eventGuest" />
+      <div angucomplete-alt id="eventGuest"
+                placeholder="Search for guests"
+                pause="300"
+                selected-object="selectedPerson"
+                local-data="users"
+                local-search="localSearch"
+                title-field="fname,lname"
+                minlength="1"
+                input-class="form-control form-control-small"
+                match-class="highlight">
+      </div>
+      <!-- <input id="eventGuests" list="guests" type="text" placeholder="event guests" class="form-control" ng-model="newEvent.guest" name="eventGuest" />
       <datalist id="guests">
         <option ng-repeat="user in users" value="{{user.fname + ' ' + user.lname}}">
-      </datalist>
-      <button type="button" class="btn btn-xs btn-success new-guest-btn" ng-disabled="!newEvent.guest" ng-click="addGuest(newEvent.guest)">
+      </datalist> -->
+      <!-- <button type="button" class="btn btn-xs btn-success new-guest-btn" ng-disabled="!newEvent.guest" ng-click="addGuest(newEvent.guest)"> -->
+      <button class="btn btn-xs btn-success new-guest-btn" type="submit" ng-disabled="!selectedPerson" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">
         <span class="glyphicon glyphicon-plus plus-icon"></span>
       </button>
     </div>

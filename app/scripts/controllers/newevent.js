@@ -21,9 +21,35 @@ angular.module('eventAppApp')
     $scope.users = $firebaseArray(Ref.child('users'));
     $scope.newEvent.guests = [];
 
+    // $scope.addGuest = function(guest) {
+    //   $scope.newEvent.guests.push(guest);
+    //   $scope.newEvent.guest = '';
+    // };
+    $scope.localSearch = function(str) {
+      var matches = [];
+      $scope.users.forEach(function(person) {
+        var fullName = person.fname + ' ' + person.lname;
+        if ((person.fname.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0) ||
+            (person.lname.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0) ||
+            (fullName.toLowerCase().indexOf(str.toString().toLowerCase()) >= 0)) {
+          matches.push(person);
+        }
+      });
+      return matches;
+    };
+
     $scope.addGuest = function(guest) {
       $scope.newEvent.guests.push(guest);
-      $scope.newEvent.guest = '';
+      console.log($scope.newEvent.guests);
+    };
+
+    $scope.clearSelection = function(id) {
+      if (id) {
+        $scope.$broadcast('angucomplete-alt:clearInput', id);
+      }
+      else{
+        $scope.$broadcast('angucomplete-alt:clearInput');
+      }
     };
 
     var autocomplete;

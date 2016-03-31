@@ -6,7 +6,7 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li ng-repeat="guest in event.guests">{{guest}}</li>
+        <li ng-repeat="guest in event.guests | orderBy:'lname'">{{guest.fname + ' ' + guest.lname}}</li>
       </ul>
     </div>
   	<h1>{{event.name}}</h1>
