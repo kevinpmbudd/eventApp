@@ -67,6 +67,10 @@ nav {
 //   display: flex;
 //   align-items: center;
 // }
+.validate-error {
+  color: red;
+  font-size: .9em;
+}
 
 /* Create account form */
 .form-signin {
@@ -75,7 +79,7 @@ nav {
   margin: 0 auto;
 }
 .form-signin input {
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
 }
 .form-signin .form-signin-heading {
   margin-bottom: 10px;
@@ -168,7 +172,6 @@ input[type="time"].form-control {
 /* Profile form */
 .form-profile {
   max-width: 900px;
-  padding: 15px;
   margin: 0 auto;
 }
 .form-profile input {

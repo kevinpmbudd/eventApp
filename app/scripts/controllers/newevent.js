@@ -31,8 +31,11 @@ angular.module('eventAppApp')
     var updateMarker = function() {
       $scope.newEvent.location = {
         latitude: autocomplete.getPlace().geometry.location.lat(),
-        longitude: autocomplete.getPlace().geometry.location.lng()
+        longitude: autocomplete.getPlace().geometry.location.lng(),
+        name: autocomplete.getPlace().name,
+        address: autocomplete.getPlace().formatted_address
       };
+
     };
 
     uiGmapGoogleMapApi.then(function(maps) {
@@ -40,6 +43,7 @@ angular.module('eventAppApp')
       var options = {};
 
       autocomplete = new maps.places.Autocomplete(input, options);
+
       autocomplete.addListener('place_changed', updateMarker);
     });
 
