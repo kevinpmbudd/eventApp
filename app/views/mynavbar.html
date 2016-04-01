@@ -16,7 +16,8 @@
         <li><a ng-show-auth="" ng-href="#/events">events</a></li>
         <li><a ng-show-auth="" ng-href="#/newEvent">new event</a></li>
         <li><a ng-show-auth="" href="#/account">account</a></li>
-        <li><a class="btn btn-default" style="border:none;" ng-click="logout()" ng-show-auth>Log Out</a></li>
+        <li><a ng-click="logout()" ng-show-auth>Log Out</a></li>
+        <li><a ng-click="passwordLogin(email, pass)" ng-hide-auth>Log In</a></li>
       </ul>
       <form class="navbar-form navbar-right">
         <div class="form-group" ng-hide-auth>
@@ -25,7 +26,6 @@
         <div class="form-group" ng-hide-auth>
           <input id="loginPass" placeholder="password" required name="pass" type="password" ng-model="pass" class="form-control pull-right" />
         </div>
-        <button class="btn btn-default" style="border:none;" ng-click="passwordLogin(email, pass)" ng-hide-auth>Log In</button>
       </form>
     </div>
   </div>
