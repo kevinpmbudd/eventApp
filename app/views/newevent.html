@@ -4,16 +4,16 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
       <label for="eventName">What's this event called?</label>
-      <input type="name" id="eventName" class="form-control" placeholder="event name" ng-model="newEvent.name" name="eventName" required>
-      <div ng-show="eventForm.$submitted || eventForm.eventName.$touched">
+      <input type="name" id="eventName" class="form-control" placeholder="event name" ng-model="newEvent.name" name="eventName" autofocus required>
+      <div class="msg-show" ng-show="eventForm.$submitted || eventForm.eventName.$touched">
           <span class="validate-error" ng-show="eventForm.eventName.$error.required">Event name required.</span>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <label for="eventHost">Who's hosting?</label>
       <input type="name" id="eventHost" class="form-control" placeholder="event host" ng-model="newEvent.host" name="eventHost" required>
-      <div ng-show="eventForm.$submitted || eventForm.eventHost.$touched">
-          <span class="validate-error" ng-show="eventForm.eventHost.$error.required">Event host required.</span>
+      <div class="msg-show" ng-show="eventForm.$submitted || eventForm.eventHost.$touched">
+          <span class="validate-error" ng-show="eventForm.eventHost.$error.required">Host required.</span>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
@@ -27,7 +27,7 @@
                 <option value="Meetup">
                   <option value="Potluck">
       </datalist>
-      <div ng-show="eventForm.$submitted || eventForm.eventType.$touched">
+      <div class="msg-show" ng-show="eventForm.$submitted || eventForm.eventType.$touched">
           <span class="validate-error" ng-show="eventForm.eventType.$error.required">Event type required.</span>
       </div>
       </div>
@@ -55,14 +55,20 @@
     </div>
     <div class="col-xs-12 col-md-8">
       <label for="eventLocation">Where's it happening?</label>
-      <input id="search-box" class="form-control" type="text"></input>
+      <input id="search-box" class="form-control" type="text" name="eventLocation" required></input>
+      <div ng-show="eventForm.$submitted || eventForm.eventLocation.$touched">
+          <span class="validate-error" ng-show="eventForm.eventLocation.$error.required">Location required.</span>
+      </div>
     </div>
   </div>
   <div class="row date">
     <div class="col-xs-6 col-sm-3 form-group has-feedback has-feedback-left">
       <label class="control-label" for="startDate">What day does it start?</label>
-      <input id="startDate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="newEvent.startDateTime" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="start date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" ng-change="setMinDate()" required/>
+      <input id="startDate" type="text" class="form-control" name="startDate" uib-datepicker-popup="{{format}}" ng-model="newEvent.startDateTime" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="start date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" ng-change="setMinDate()" required/>
       <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
+      <div ng-show="eventForm.$submitted || eventForm.startDate.$touched">
+          <span class="validate-error" ng-show="eventForm.startDate.$error.required">Start date required.</span>
+      </div>
     </div>
     <div class="col-xs-6 col-sm-3">
       <label class="control-label" for="startDate">What time?</label>
