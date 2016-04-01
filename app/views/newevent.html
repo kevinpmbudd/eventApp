@@ -1,6 +1,5 @@
 <form novalidate name="eventForm" class="form-new-event css-form">
   <h1 class="jumbotron text-center">NEW EVENT</h1>
-  <!-- <p ng-show="err" class="bg-danger">{{err}}</p> -->
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
       <label for="eventName">What's this event called?</label>
@@ -34,7 +33,7 @@
     <div class="col-xs-12 col-sm-6 col-md-4">
       <label for="eventGuests">Who's going?</label>
       <div angucomplete-alt id="eventGuest"
-                placeholder="Search for guests"
+                placeholder="Add guests"
                 pause="300"
                 selected-object="selectedPerson"
                 local-data="users"
@@ -44,11 +43,6 @@
                 input-class="form-control form-control-small"
                 match-class="highlight">
       </div>
-      <!-- <input id="eventGuests" list="guests" type="text" placeholder="event guests" class="form-control" ng-model="newEvent.guest" name="eventGuest" />
-      <datalist id="guests">
-        <option ng-repeat="user in users" value="{{user.fname + ' ' + user.lname}}">
-      </datalist> -->
-      <!-- <button type="button" class="btn btn-xs btn-success new-guest-btn" ng-disabled="!newEvent.guest" ng-click="addGuest(newEvent.guest)"> -->
       <button class="btn btn-xs btn-success new-guest-btn" type="submit" ng-disabled="!selectedPerson" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">
         <span class="glyphicon glyphicon-plus plus-icon"></span>
       </button>
@@ -71,8 +65,8 @@
       </div>
     </div>
     <div class="col-xs-6 col-sm-3">
-      <label class="control-label" for="startDate">What time?</label>
-      <input type="time" class="time-box form-control" ng-model="newEvent.startDateTime" required>
+      <label class="control-label" for="startTime">What time?</label>
+      <input type="time" id="startTime" class="time-box form-control" ng-model="newEvent.startDateTime" name="startTime" required>
     </div>
     <div class="col-xs-6 col-sm-3 form-group has-feedback has-feedback-left">
       <label class="control-label" for="endDate">What day does it end?</label>
@@ -90,17 +84,8 @@
   <div class="row">
     <div class="col-xs-12">
       <label for="eventMessage">Include an optional message to your guests</label>
-      <textarea id="eventMessage" class="form-control" name="message" ng-model="newEvent.message" required></textarea>
+      <textarea id="eventMessage" class="form-control" name="message" ng-model="newEvent.message"></textarea>
     </div>
   </div>
-  <!-- <script type="text/ng-template" id="searchbox.tpl.html">
-    <input type="text" class="map-search-box" placeholder="event location">
-  </script>
-  <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true">
-    <ui-gmap-search-box class="map-search-box" options="searchbox.options" template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv">
-    </ui-gmap-search-box>
-    <ui-gmap-marker coords="marker.coords" idKey="marker.id">
-    </ui-gmap-marker>
-  </ui-gmap-google-map> -->
   <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="eventForm.$invalid" ng-cloak ng-click="addEvent(newEvent)">Create</button>
 </form>

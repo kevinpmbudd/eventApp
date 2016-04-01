@@ -10,7 +10,7 @@
 	</div> -->
 <!-- </div> -->
 <section class="row text-center center-block">
-	<article class="col-xs-12 col-md-4 col-sm-6 well event-card" ng-repeat="event in events | orderBy:'startDateTime'">
+	<article class="col-xs-12 col-sm-6 col-md-4 col-lg-3 well event-card" ng-repeat="event in events | orderBy:'startDateTime'">
 		<div class="event-card-padding">
 			<a ng-href="/#/events/{{event.$id}}">
     	  <h2 class="text-center">{{event.name}}</h2>

@@ -24,7 +24,7 @@ angular.module('eventAppApp')
         endDateTime: event.endDateTime.getTime(),
         location: event.location,
         guests: event.guests,
-        message: event.message
+        message: event.message || ""
       });
     };
 

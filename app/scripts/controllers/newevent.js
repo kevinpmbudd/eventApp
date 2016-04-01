@@ -9,11 +9,9 @@
  */
 angular.module('eventAppApp')
   .controller('NeweventCtrl', function($scope, Ref, $firebaseArray, $timeout, $location, myEvents, uiGmapGoogleMapApi) {
-    //$scope.events = myEvents.list;
     $scope.newEvent = {};
 
     $scope.addEvent = function(event) {
-      console.log(event);
       myEvents.add(event);
       redirect();
     };
@@ -21,10 +19,6 @@ angular.module('eventAppApp')
     $scope.users = $firebaseArray(Ref.child('users'));
     $scope.newEvent.guests = [];
 
-    // $scope.addGuest = function(guest) {
-    //   $scope.newEvent.guests.push(guest);
-    //   $scope.newEvent.guest = '';
-    // };
     $scope.localSearch = function(str) {
       var matches = [];
       $scope.users.forEach(function(person) {
@@ -40,7 +34,6 @@ angular.module('eventAppApp')
 
     $scope.addGuest = function(guest) {
       $scope.newEvent.guests.push(guest);
-      console.log($scope.newEvent.guests);
     };
 
     $scope.clearSelection = function(id) {
@@ -73,59 +66,6 @@ angular.module('eventAppApp')
 
       autocomplete.addListener('place_changed', updateMarker);
     });
-
-
-
-    //initialize google map with default options
-    // $scope.map = {
-    //   control: {},
-    //   center: {
-    //     latitude: 39.85,
-    //     longitude: -98.55
-    //   },
-    //   zoom: 3
-    // };
-    // //initialize a google maps marker with default options
-    // $scope.marker = {
-    //   id: 0,
-    //   coords: {
-    //     latitude: 0,
-    //     longitude: 0
-    //   }
-    // };
-
-    // var events = {
-    //   places_changed: function(searchBox) {
-    //     //grab the selected item from the searchbox
-    //     var place = searchBox.getPlaces();
-    //     if (place.length === 0) {
-    //       return;
-    //     }
-    //     //re center the map on the selected location
-    //     $scope.map = {
-    //       center: {
-    //         latitude: place[0].geometry.location.lat(),
-    //         longitude: place[0].geometry.location.lng()
-    //       },
-    //       zoom: 18
-    //     };
-    //     //add marker on the selected spot
-    //     $scope.marker = {
-    //       id: 0,
-    //       coords: {
-    //         latitude: place[0].geometry.location.lat(),
-    //         longitude: place[0].geometry.location.lng()
-    //       }
-    //     };
-
-    //     $scope.newEvent.location = {
-    //       latitude: place[0].geometry.location.lat(),
-    //       longitude: place[0].geometry.location.lng()
-    //     };
-    //   }
-    // };
-    // //initialize map searchbox with options
-    // $scope.searchbox = { template: 'searchbox.tpl.html', events: events, parentdiv: 'eventLocation' };
 
     function alert(msg) {
       $scope.err = msg;
@@ -171,7 +111,7 @@ angular.module('eventAppApp')
     };
 
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
+    $scope.format = $scope.formats[2];
     $scope.altInputFormats = ['M!/d!/yyyy'];
 
     $scope.popup1 = {
@@ -181,5 +121,4 @@ angular.module('eventAppApp')
     $scope.popup2 = {
       opened: false
     };
-
   });

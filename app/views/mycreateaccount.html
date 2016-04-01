@@ -29,7 +29,7 @@
 
     <label for="accountPass">Password</label>
     <input type="password" id="accountPass" class="form-control" placeholder="Password" name="pass" ng-model="accountPass" required my-validator>
-     <div class="msg-show" ng-show="accountForm.$submitted || accountForm.pass.$touched || accountForm.pass.$dirty && accountForm.pass.$invalid">
+     <div ng-show="accountForm.$submitted || accountForm.pass.$touched || accountForm.pass.$dirty && accountForm.pass.$invalid">
       <div class="validate-error" ng-show="accountForm.pass.$error.longEnough">Password must be at least 8 Characters.</div>
       <div class="validate-error" ng-show="accountForm.pass.$error.containsLetter">Password must contain a letter.</div>
       <div class="validate-error" ng-show="accountForm.pass.$error.containsNumber">Password must contain a number.</div>
