@@ -7,14 +7,14 @@
       <div class="col-xs-6">
         <label for="accountFirstName">First Name</label>
         <input type="text" id="accountFirstName" class="form-control" placeholder="First Name" required autocomplete="given-name" name="fname" ng-model="firstName" autofocus>
-        <div ng-show="accountForm.$submitted || accountForm.fname.$touched">
+        <div class="msg-show" ng-show="accountForm.$submitted || accountForm.fname.$touched">
           <span class="validate-error" ng-show="accountForm.fname.$error.required">First name required.</span>
         </div>
       </div>
       <div class="col-xs-6">
         <label for="accountLastName">Last Name</label>
         <input type="text" id="accountLastName" class="form-control" placeholder="Last Name" required autocomplete="family-name" name="lname" ng-model="lastName">
-        <div ng-show="accountForm.$submitted || accountForm.lname.$touched">
+        <div class="msg-show" ng-show="accountForm.$submitted || accountForm.lname.$touched">
           <span class="validate-error" ng-show="accountForm.lname.$error.required">Last name is required.</span>
         </div>
       </div>
@@ -22,14 +22,14 @@
 
     <label for="accountEmail">Email address</label>
     <input type="email" id="accountEmail" class="form-control" placeholder="Email address" required autocomplete="email" name="email" ng-model="accountEmail">
-    <div ng-show="accountForm.$submitted || accountForm.email.$touched">
+    <div class="msg-show" ng-show="accountForm.$submitted || accountForm.email.$touched">
       <span class="validate-error" ng-show="accountForm.email.$error.required">Email address is required.</span>
       <span class="validate-error" ng-show="accountForm.email.$error.email">Please enter a valid email.</span>
     </div>
 
     <label for="accountPass">Password</label>
     <input type="password" id="accountPass" class="form-control" placeholder="Password" name="pass" ng-model="accountPass" required my-validator>
-     <div ng-show="accountForm.$submitted || accountForm.pass.$touched || accountForm.pass.$dirty && accountForm.pass.$invalid">
+     <div class="msg-show" ng-show="accountForm.$submitted || accountForm.pass.$touched || accountForm.pass.$dirty && accountForm.pass.$invalid">
       <div class="validate-error" ng-show="accountForm.pass.$error.longEnough">Password must be at least 8 Characters.</div>
       <div class="validate-error" ng-show="accountForm.pass.$error.containsLetter">Password must contain a letter.</div>
       <div class="validate-error" ng-show="accountForm.pass.$error.containsNumber">Password must contain a number.</div>

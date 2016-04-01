@@ -54,10 +54,10 @@
       </button>
     </div>
     <div class="col-xs-12 col-md-8">
-      <label for="eventLocation">Where's it happening?</label>
-      <input id="search-box" class="form-control" type="text" name="eventLocation" required></input>
-      <div ng-show="eventForm.$submitted || eventForm.eventLocation.$touched">
-          <span class="validate-error" ng-show="eventForm.eventLocation.$error.required">Location required.</span>
+      <label for="search-box">Where's it happening?</label>
+      <input id="search-box" class="form-control" type="text" name="location" ng-model="newEvent.dummyLocation"required>
+      <div class="msg-show" ng-show="eventForm.$submitted || eventForm.location.$touched">
+          <span class="validate-error" ng-show="eventForm.location.$error.required">Location required.</span>
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@
       <label class="control-label" for="startDate">What day does it start?</label>
       <input id="startDate" type="text" class="form-control" name="startDate" uib-datepicker-popup="{{format}}" ng-model="newEvent.startDateTime" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="start date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" ng-change="setMinDate()" required/>
       <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
-      <div ng-show="eventForm.$submitted || eventForm.startDate.$touched">
+      <div class="msg-show" ng-show="eventForm.$submitted || eventForm.startDate.$touched">
           <span class="validate-error" ng-show="eventForm.startDate.$error.required">Start date required.</span>
       </div>
     </div>
@@ -76,8 +76,11 @@
     </div>
     <div class="col-xs-6 col-sm-3 form-group has-feedback has-feedback-left">
       <label class="control-label" for="endDate">What day does it end?</label>
-      <input id="endDate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="newEvent.endDateTime" is-open="popup2.opened" datepicker-options="dateOptions" placeholder="end date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open2()"  required/>
+      <input id="endDate" type="text" class="form-control" name="endDate" uib-datepicker-popup="{{format}}" ng-model="newEvent.endDateTime" is-open="popup2.opened" datepicker-options="dateOptions" placeholder="end date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open2()"  required/>
       <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
+      <div class="msg-show" ng-show="eventForm.$submitted || eventForm.endDate.$touched">
+          <span class="validate-error" ng-show="eventForm.endDate.$error.required">End date required.</span>
+      </div>
     </div>
     <div class="col-xs-6 col-sm-3">
       <label class="control-label" for="startDate">What time?</label>

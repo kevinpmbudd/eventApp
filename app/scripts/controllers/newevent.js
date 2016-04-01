@@ -52,6 +52,7 @@ angular.module('eventAppApp')
       }
     };
 
+    //google maps api places library autocomplete location search box
     var autocomplete;
 
     var updateMarker = function() {
