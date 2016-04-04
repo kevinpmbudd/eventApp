@@ -20,6 +20,10 @@ function myNavbar() {
   return directive;
 
   function myNavbarCtrl($scope, Auth, Ref, $location, $log, $firebaseObject) {
+    $('.navbar-collapse').click('li', function() {
+      $('.navbar-collapse').collapse('hide');
+    });
+
     $scope.auth = Auth;
 
     $scope.auth.$onAuth(function(authData) {

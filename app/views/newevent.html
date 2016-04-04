@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
       <label for="eventName" class="control-label">What's this event called?</label>
-      <input type="name" id="eventName" class="form-control" placeholder="event name" ng-model="newEvent.name" name="eventName" autofocus required>
+      <input type="name" id="eventName" class="form-control" placeholder="event name" ng-model="newEvent.name" name="eventName" my-autofocus required>
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.eventName.$touched">
           <span class="validate-error" ng-show="eventForm.eventName.$error.required">Event name required.</span>
       </div>
@@ -40,12 +40,27 @@
                 local-search="localSearch"
                 title-field="fname,lname"
                 minlength="1"
-                input-class="form-control form-control-small"
+                input-class="form-control"
                 match-class="highlight">
       </div>
+      <!-- <div class="msg-show" ng-show="eventForm.$submitted || eventForm.guests.$touched">
+          <span class="validate-error" ng-show="eventForm.guests.$error.required">At least one guest required.</span>
+      </div> -->
       <button class="btn btn-xs btn-success new-guest-btn" type="submit" ng-disabled="!selectedPerson" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">
         <span class="glyphicon glyphicon-plus plus-icon"></span>
       </button>
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle guests-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-disabled="newEvent.guests.length == 0">
+          Guests
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li name="guests" required ng-repeat="guest in newEvent.guests | orderBy:'lname'">{{guest.fname + ' ' + guest.lname}}</li>
+        </ul>
+        <div class="msg-show" ng-show="eventForm.$submitted || eventForm.guests.$touched">
+          <span class="validate-error" ng-show="eventForm.guests.$error.required">At least one guest required.</span>
+      </div>
+      </div>
     </div>
     <div class="col-xs-12 col-md-8">
       <label for="search-box" class="control-label">Where's it happening?</label>
