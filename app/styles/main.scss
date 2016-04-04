@@ -289,8 +289,36 @@ footer p {
   background-color: #000000;
 }
 
+/* ResponsiveL Smaller Mobile */
+@media screen and (min-width: 0px) {
+   ::-webkit-input-placeholder  {
+    font-size: .75em;
+   }
+
+   .container {
+    padding-left: 5;
+    padding-right: 5;
+   }
+
+   .jumbotron {
+    font-size: 1.9em;
+   }
+
+   .form-new-event input {
+    margin-bottom: 12px;
+   }
+
+   .control-label {
+    font-size: 0.84em;
+   }
+
+   .validate-error {
+    font-size: .64em;
+   }
+}
+
 /* Responsive: Mobile */
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 375px) {
    ::-webkit-input-placeholder  {
     font-size: .9em;
    }
@@ -309,6 +337,13 @@ footer p {
 
    .jumbotron {
     font-size: 1.9em;
+   }
+
+   .form-new-event input {
+    margin-bottom: 15px;
+   }
+   .control-label {
+    font-size: 1em;
    }
 
    .validate-error {
