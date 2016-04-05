@@ -42,10 +42,12 @@
                 minlength="1"
                 input-class="form-control"
                 match-class="highlight"
-                input-name="guestList">
+                input-name="guestList"
+                field-required-class="guests"
+                field-required="true">
       </angucomplete-alt>
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.guestList.$touched">
-          <span class="validate-error" ng-show="eventForm.guestList.$error.guestRequired">At least one guest required.</span>
+          <span class="validate-error" ng-show="eventForm.guests.$invalid">At least one guest required.</span>
       </div>
       <button class="btn btn-xs btn-success new-guest-btn" type="submit" ng-disabled="!selectedPerson" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">
         <span class="glyphicon glyphicon-plus plus-icon"></span>

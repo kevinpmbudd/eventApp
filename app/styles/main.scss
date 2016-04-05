@@ -127,6 +127,9 @@ nav {
 .css-form input.ng-invalid.ng-touched {
     border: 1px solid red;
 }
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
 .btn-block  {
   margin-top: 10px;
 }
