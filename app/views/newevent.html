@@ -32,7 +32,7 @@
       </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <label for="eventGuests" class="control-label">Who's going?</label>
-      <div angucomplete-alt id="eventGuest"
+      <angucomplete-alt id="eventGuest"
                 placeholder="Add guests"
                 pause="300"
                 selected-object="selectedPerson"
@@ -41,25 +41,27 @@
                 title-field="fname,lname"
                 minlength="1"
                 input-class="form-control"
-                match-class="highlight">
+                match-class="highlight"
+                input-name="guestList">
+      </angucomplete-alt>
+      <div class="msg-show" ng-show="eventForm.$submitted || eventForm.guestList.$touched">
+          <span class="validate-error" ng-show="eventForm.guestList.$error.guestRequired">At least one guest required.</span>
       </div>
-      <!-- <div class="msg-show" ng-show="eventForm.$submitted || eventForm.guests.$touched">
-          <span class="validate-error" ng-show="eventForm.guests.$error.required">At least one guest required.</span>
-      </div> -->
       <button class="btn btn-xs btn-success new-guest-btn" type="submit" ng-disabled="!selectedPerson" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">
         <span class="glyphicon glyphicon-plus plus-icon"></span>
       </button>
+
       <div class="dropdown">
         <button class="btn btn-default dropdown-toggle guests-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-disabled="newEvent.guests.length == 0">
           Guests
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li name="guests" required ng-repeat="guest in newEvent.guests | orderBy:'lname'">{{guest.fname + ' ' + guest.lname}}</li>
+          <li name="guests" ng-repeat="guest in newEvent.guests | orderBy:'lname'">{{guest.fname + ' ' + guest.lname}}</li>
         </ul>
-        <div class="msg-show" ng-show="eventForm.$submitted || eventForm.guests.$touched">
+        <!-- <div class="msg-show" ng-show="eventForm.$submitted || eventForm.guests.$touched">
           <span class="validate-error" ng-show="eventForm.guests.$error.required">At least one guest required.</span>
-      </div>
+        </div> -->
       </div>
     </div>
     <div class="col-xs-12 col-md-8">
@@ -71,30 +73,33 @@
     </div>
   </div>
   <div class="row date">
-    <div class="col-xs-6 col-sm-3 form-group has-feedback has-feedback-left">
-      <label class="control-label" for="startDate">What day does it start?</label>
-      <input id="startDate" type="text" class="form-control" name="startDate" uib-datepicker-popup="{{format}}" ng-model="newEvent.startDateTime" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="start date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" ng-change="setMinDate()" required/>
+    <div class="col-xs-12 col-sm-6 form-group has-feedback has-feedback-left">
+      <label class="control-label" for="startDate">When does it start?</label>
+      <!-- <input id="startDate" type="text" class="form-control" name="startDate" uib-datepicker-popup="{{format}}" ng-model="newEvent.startDateTime" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="start date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" ng-change="setMinDate()" required/> -->
+      <input type="datetime-local" class="form-control" name="startDate" ng-model="newEvent.startDateTime" required/>
       <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.startDate.$touched">
-          <span class="validate-error" ng-show="eventForm.startDate.$error.required">Start date required.</span>
+          <span class="validate-error" ng-show="eventForm.startDate.$error.required">Start date/time required.</span>
       </div>
     </div>
-    <div class="col-xs-6 col-sm-3">
+    <!-- <div class="col-xs-6 col-sm-3">
       <label class="control-label" for="startTime">What time?</label>
       <input type="time" id="startTime" class="time-box form-control" ng-model="newEvent.startDateTime" name="startTime" required>
-    </div>
-    <div class="col-xs-6 col-sm-3 form-group has-feedback has-feedback-left">
-      <label class="control-label" for="endDate">What day does it end?</label>
-      <input id="endDate" type="text" class="form-control" name="endDate" uib-datepicker-popup="{{format}}" ng-model="newEvent.endDateTime" is-open="popup2.opened" datepicker-options="dateOptions" placeholder="end date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open2()"  required/>
+    </div> -->
+    <div class="col-xs-12 col-sm-6 form-group has-feedback has-feedback-left">
+      <label class="control-label" for="endDate">When does it end?</label>
+      <!-- <input id="endDate" type="text" class="form-control" name="endDate" uib-datepicker-popup="{{format}}" ng-model="newEvent.endDateTime" is-open="popup2.opened" datepicker-options="dateOptions" placeholder="end date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open2()"  required/> -->
+      <input type="datetime-local" class="form-control" name="endDate" ng-model="newEvent.endDateTime" min="{{newEvent.startDateTime}}" required/>
       <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.endDate.$touched">
-          <span class="validate-error" ng-show="eventForm.endDate.$error.required">End date required.</span>
+          <span class="validate-error" ng-show="eventForm.endDate.$error.required">End date/time required.</span>
+          <span class="validate-error" ng-show="eventForm.endDate.$error.min">Event must end after it begins.</span>
       </div>
     </div>
-    <div class="col-xs-6 col-sm-3">
+    <!-- <div class="col-xs-6 col-sm-3">
       <label class="control-label" for="startDate">What time?</label>
       <input type="time" class="time-box form-control" ng-model="newEvent.endDateTime" required>
-    </div>
+    </div> -->
   </div>
   <div class="row">
     <div class="col-xs-12">
@@ -102,5 +107,11 @@
       <textarea id="eventMessage" class="form-control" name="message" ng-model="newEvent.message"></textarea>
     </div>
   </div>
+  <!-- <div class="col-xs-12 col-sm-6 col-md-4">
+    <input type="hidden" id="test" class="form-control" placeholder="test" ng-model="newEvent.guests" name="test" required>
+    <div class="msg-show" ng-show="eventForm.$submitted || eventForm.test.$touched">
+        <span class="validate-error" ng-show="eventForm.test.$error.required">required.</span>
+    </div>
+  </div> -->
   <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="eventForm.$invalid" ng-cloak ng-click="addEvent(newEvent)">Create</button>
 </form>
