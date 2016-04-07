@@ -15,8 +15,11 @@ angular.module('eventAppApp')
 
         ctrl.$setValidity('hasGuests', false);
 
-        ctrl.$parsers.unshift(function(viewValue) {
-        	console.log(viewValue, scope);
+        $('.new-guest-btn').on('click', function() {
+          console.log(scope);
+          if(scope.newEvent.guest.length !== 0){
+            ctrl.$setValidity('hasGuests', true);
+          }
         });
       }
     };
