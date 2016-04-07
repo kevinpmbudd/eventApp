@@ -27,5 +27,17 @@ angular.module('eventAppApp')
   				longitude: data.location.longitude
   			}
   		};
+
+      $scope.windowOptions = {
+        visible: false
+      };
+
+      $scope.onClick = function() {
+        $scope.windowOptions.visible = !$scope.windowOptions.visible;
+      };
+
+      $scope.closeClick = function() {
+        $scope.windowOptions.visible = false;
+      };
   	});
   });

@@ -20,8 +20,7 @@ function myNavbar() {
   return directive;
 
   function myNavbarCtrl($scope, Auth, Ref, $location, $log, $firebaseObject) {
-    $('.link').click(function(event) {
-      console.log(event);
+    $('.link').click(function() {
       $('.navbar-collapse').collapse('hide');
     });
 

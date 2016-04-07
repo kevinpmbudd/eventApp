@@ -48,6 +48,10 @@ angular.module('eventAppApp')
       require: 'ngModel',
       link: function(scope, element, attrs, ctrl) {
 
+        element.on('focusout', function() {
+          console.log(ctrl);
+        });
+
         ctrl.$setValidity('containsLetter', false);
         ctrl.$setValidity('containsNumber', false);
         ctrl.$setValidity('longEnough', false);

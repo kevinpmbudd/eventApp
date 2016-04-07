@@ -6,7 +6,7 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li ng-repeat="guest in event.guests | orderBy:'lname'">{{guest.fname + ' ' + guest.lname}}</li>
+        <li ng-repeat="guest in event.guests | orderBy:'guest'">{{guest}}</li>
       </ul>
     </div>
   	<h1>{{event.name}}</h1>
@@ -22,7 +22,9 @@
   center="map.center"
   zoom="map.zoom"
   draggable="true">
-  <ui-gmap-marker
-  				coords="map.marker.coords" idKey="map.marker.id">
+  <ui-gmap-marker coords="map.marker.coords" idKey="map.marker.id" click="onClick()">
+    <ui-gmap-window options="windowOptions" closeClick="closeClick()">
+      <h5>{{event.location.address}}</h5>
+    </ui-gmap-window>
   </ui-gmap-marker>
 </ui-gmap-google-map>

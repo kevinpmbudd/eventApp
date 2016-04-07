@@ -10,7 +10,7 @@ angular.module('eventAppApp')
   .directive('myGuestListRequired', function () {
     return {
       restrict: 'A',
-      require: 'ngModel',
+      require: '^ngModel',
       link: function (scope, element, attrs, ctrl) {
 
         ctrl.$setValidity('hasGuests', false);

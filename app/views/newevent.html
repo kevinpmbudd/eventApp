@@ -32,7 +32,15 @@
       </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <label for="eventGuests" class="control-label">Who's going?</label>
-      <angucomplete-alt id="eventGuest"
+      <input id="eventGuests" list="guests" type="text" placeholder="event guests" class="form-control" ng-model="newEvent.guest" name="eventGuest" />
+      <datalist id="guests">
+        <option ng-repeat="user in users" value="{{user.fname + ' ' + user.lname}}">
+      </datalist>
+      <button type="button" class="btn btn-xs btn-success new-guest-btn" ng-disabled="!newEvent.guest" ng-click="addGuest(newEvent.guest)">
+        <span class="glyphicon glyphicon-plus plus-icon"></span>
+      </button>
+
+      <!-- <angucomplete-alt id="eventGuest"
                 placeholder="Add guests"
                 pause="300"
                 selected-object="selectedPerson"
@@ -43,15 +51,16 @@
                 input-class="form-control"
                 match-class="highlight"
                 input-name="guestList"
-                field-required-class="guests"
-                field-required="true">
-      </angucomplete-alt>
-      <div class="msg-show" ng-show="eventForm.$submitted || eventForm.guestList.$touched">
-          <span class="validate-error" ng-show="eventForm.guests.$invalid">At least one guest required.</span>
-      </div>
-      <button class="btn btn-xs btn-success new-guest-btn" type="submit" ng-disabled="!selectedPerson" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">
+                clear-selected="true"
+                my-guest-list-required>
+      </angucomplete-alt> -->
+
+      <!-- <div class="msg-show" ng-show="eventForm.$submitted || eventForm.guestList.$touched">
+          <span class="validate-error" ng-show="eventForm.guestList.$error.guestRequired">At least one guest required.</span>
+      </div> -->
+      <!-- <button class="btn btn-xs btn-success new-guest-btn" type="submit" ng-disabled="!selectedPerson" ng-cloak ng-click="addGuest(selectedPerson.originalObject); clearSelection(eventGuest)">
         <span class="glyphicon glyphicon-plus plus-icon"></span>
-      </button>
+      </button> -->
 
       <div class="dropdown">
         <button class="btn btn-default dropdown-toggle guests-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-disabled="newEvent.guests.length == 0">
@@ -59,11 +68,8 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li name="guests" ng-repeat="guest in newEvent.guests | orderBy:'lname'">{{guest.fname + ' ' + guest.lname}}</li>
+          <li name="guests" ng-repeat="guest in newEvent.guests | orderBy:'guest'">{{guest}}</li>
         </ul>
-        <!-- <div class="msg-show" ng-show="eventForm.$submitted || eventForm.guests.$touched">
-          <span class="validate-error" ng-show="eventForm.guests.$error.required">At least one guest required.</span>
-        </div> -->
       </div>
     </div>
     <div class="col-xs-12 col-md-8">
