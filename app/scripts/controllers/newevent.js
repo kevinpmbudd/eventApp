@@ -21,7 +21,7 @@ angular.module('eventAppApp')
 
 
     $scope.addGuest = function(guest) {
-      if(guest.length !== 0) {
+      if (guest) {
         $scope.newEvent.guests.push(guest);
         $scope.newEvent.guest = '';
       }
@@ -63,44 +63,4 @@ angular.module('eventAppApp')
     function showError(err) {
       $scope.err = err;
     }
-
-    $scope.today = function() {
-      $scope.dt = new Date();
-    };
-    $scope.today();
-
-    $scope.clear = function() {
-      $scope.dt = null;
-    };
-
-    $scope.dateOptions = {
-      formatYear: 'yy',
-      maxDate: new Date(2020, 5, 22),
-      minDate: new Date(),
-      startingDay: 1
-    };
-
-    $scope.setMinDate = function() {
-      $scope.dateOptions.minDate = $scope.newEvent.startDateTime;
-    };
-
-    $scope.open1 = function() {
-      $scope.popup1.opened = true;
-    };
-
-    $scope.open2 = function() {
-      $scope.popup2.opened = true;
-    };
-
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[2];
-    $scope.altInputFormats = ['M!/d!/yyyy'];
-
-    $scope.popup1 = {
-      opened: false
-    };
-
-    $scope.popup2 = {
-      opened: false
-    };
   });

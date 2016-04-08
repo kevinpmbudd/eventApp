@@ -5,14 +5,14 @@
       <label for="eventName" class="control-label">What's this event called?</label>
       <input type="name" id="eventName" class="form-control" placeholder="event name" ng-model="newEvent.name" name="eventName" my-autofocus required>
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.eventName.$touched">
-          <span class="validate-error" ng-show="eventForm.eventName.$error.required">Event name required.</span>
+        <span class="validate-error" ng-show="eventForm.eventName.$error.required">Event name required.</span>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <label for="eventHost" class="control-label">Who's hosting?</label>
       <input type="name" id="eventHost" class="form-control" placeholder="event host" ng-model="newEvent.host" name="eventHost" required>
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.eventHost.$touched">
-          <span class="validate-error" ng-show="eventForm.eventHost.$error.required">Host required.</span>
+        <span class="validate-error" ng-show="eventForm.eventHost.$error.required">Host required.</span>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
@@ -39,7 +39,7 @@
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.eventGuest.$touched">
         <span class="validate-error" ng-show="eventForm.eventGuest.$error.hasGuests">At least one guest required.</span>
       </div>
-      <button type="button" class="btn btn-xs btn-success new-guest-btn"  ng-click="addGuest(newEvent.guest)">
+      <button type="button" class="btn btn-xs btn-success new-guest-btn" ng-click="addGuest(newEvent.guest)">
         <span class="glyphicon glyphicon-plus plus-icon"></span>
       </button>
       <div class="dropdown">
@@ -54,40 +54,30 @@
     </div>
     <div class="col-xs-12 col-md-8">
       <label for="search-box" class="control-label">Where's it happening?</label>
-      <input id="search-box" class="form-control" type="text" name="location" ng-model="newEvent.dummyLocation"required>
+      <input id="search-box" class="form-control" type="text" name="location" ng-model="newEvent.dummyLocation" required>
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.location.$touched">
-          <span class="validate-error" ng-show="eventForm.location.$error.required">Location required.</span>
+        <span class="validate-error" ng-show="eventForm.location.$error.required">Location required.</span>
       </div>
     </div>
   </div>
   <div class="row date">
     <div class="col-xs-12 col-sm-6 form-group has-feedback has-feedback-left">
       <label class="control-label" for="startDate">When does it start?</label>
-      <!-- <input id="startDate" type="text" class="form-control" name="startDate" uib-datepicker-popup="{{format}}" ng-model="newEvent.startDateTime" is-open="popup1.opened" datepicker-options="dateOptions" placeholder="start date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open1()" ng-change="setMinDate()" required/> -->
       <input type="datetime-local" class="form-control" name="startDate" ng-model="newEvent.startDateTime" required/>
       <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.startDate.$touched">
-          <span class="validate-error" ng-show="eventForm.startDate.$error.required">Start date/time required.</span>
+        <span class="validate-error" ng-show="eventForm.startDate.$error.required">Start date/time required.</span>
       </div>
     </div>
-    <!-- <div class="col-xs-6 col-sm-3">
-      <label class="control-label" for="startTime">What time?</label>
-      <input type="time" id="startTime" class="time-box form-control" ng-model="newEvent.startDateTime" name="startTime" required>
-    </div> -->
     <div class="col-xs-12 col-sm-6 form-group has-feedback has-feedback-left">
       <label class="control-label" for="endDate">When does it end?</label>
-      <!-- <input id="endDate" type="text" class="form-control" name="endDate" uib-datepicker-popup="{{format}}" ng-model="newEvent.endDateTime" is-open="popup2.opened" datepicker-options="dateOptions" placeholder="end date" close-text="Close" alt-input-formats="altInputFormats" ng-click="open2()"  required/> -->
       <input type="datetime-local" class="form-control" name="endDate" ng-model="newEvent.endDateTime" min="{{newEvent.startDateTime}}" required/>
       <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.endDate.$touched">
-          <span class="validate-error" ng-show="eventForm.endDate.$error.required">End date/time required.</span>
-          <span class="validate-error" ng-show="eventForm.endDate.$error.min">Event must end after it begins.</span>
+        <span class="validate-error" ng-show="eventForm.endDate.$error.required">End date/time required.</span>
+        <span class="validate-error" ng-show="eventForm.endDate.$error.min">Event must end after it begins.</span>
       </div>
     </div>
-    <!-- <div class="col-xs-6 col-sm-3">
-      <label class="control-label" for="startDate">What time?</label>
-      <input type="time" class="time-box form-control" ng-model="newEvent.endDateTime" required>
-    </div> -->
   </div>
   <div class="row">
     <div class="col-xs-12">
@@ -95,11 +85,5 @@
       <textarea id="eventMessage" class="form-control" name="message" ng-model="newEvent.message"></textarea>
     </div>
   </div>
-  <!-- <div class="col-xs-12 col-sm-6 col-md-4">
-    <input type="hidden" id="test" class="form-control" placeholder="test" ng-model="newEvent.guests" name="test" required>
-    <div class="msg-show" ng-show="eventForm.$submitted || eventForm.test.$touched">
-        <span class="validate-error" ng-show="eventForm.test.$error.required">required.</span>
-    </div>
-  </div> -->
   <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="eventForm.$invalid" ng-cloak ng-click="addEvent(newEvent)">Create</button>
 </form>
