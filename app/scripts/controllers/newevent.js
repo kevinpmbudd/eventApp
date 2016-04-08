@@ -10,6 +10,12 @@
 angular.module('eventAppApp')
   .controller('NeweventCtrl', function($scope, Ref, $firebaseArray, $timeout, $location, myEvents, uiGmapGoogleMapApi) {
     $scope.newEvent = {};
+    $scope.minDate;
+
+    $scope.setMinDate = function() {
+      $scope.minDate = new Date($scope.newEvent.startDateTime.getTime() + 60000);
+    };
+
 
     $scope.addEvent = function(event) {
       myEvents.add(event);
@@ -24,6 +30,8 @@ angular.module('eventAppApp')
       if (guest) {
         $scope.newEvent.guests.push(guest);
         $scope.newEvent.guest = '';
+        console.log($scope.newEvent.startDateTime.getTime());
+        console.log($scope.newEvent.endDateTime.getTime());
       }
     };
 

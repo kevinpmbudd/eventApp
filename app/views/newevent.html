@@ -63,7 +63,7 @@
   <div class="row date">
     <div class="col-xs-12 col-sm-6 form-group has-feedback has-feedback-left">
       <label class="control-label" for="startDate">When does it start?</label>
-      <input type="datetime-local" class="form-control" name="startDate" ng-model="newEvent.startDateTime" required/>
+      <input type="datetime-local" class="form-control" ng-change='setMinDate()' name="startDate" ng-model="newEvent.startDateTime" required/>
       <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.startDate.$touched">
         <span class="validate-error" ng-show="eventForm.startDate.$error.required">Start date/time required.</span>
@@ -71,7 +71,7 @@
     </div>
     <div class="col-xs-12 col-sm-6 form-group has-feedback has-feedback-left">
       <label class="control-label" for="endDate">When does it end?</label>
-      <input type="datetime-local" class="form-control" name="endDate" ng-model="newEvent.endDateTime" min="{{newEvent.startDateTime}}" required/>
+      <input type="datetime-local" class="form-control" name="endDate" ng-model="newEvent.endDateTime" ng-min="minDate" required/>
       <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
       <div class="msg-show" ng-show="eventForm.$submitted || eventForm.endDate.$touched">
         <span class="validate-error" ng-show="eventForm.endDate.$error.required">End date/time required.</span>
