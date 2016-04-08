@@ -28,7 +28,6 @@ function myNavbar() {
 
     $scope.auth.$onAuth(function(authData) {
       $scope.authData = authData;
-      // setNavbarGreetingName($scope.authData);
     });
 
     $scope.passwordLogin = function(email, pass) {

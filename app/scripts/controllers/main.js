@@ -9,6 +9,4 @@
  */
 angular.module('eventAppApp')
   .controller('MainCtrl', function () {
-
-
   });
