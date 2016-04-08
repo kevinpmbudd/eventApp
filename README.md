@@ -1,4 +1,7 @@
 # event-app
+
+###a live version of the project is [here on firebase](http://angulareventplanner.firebaseapp.com)
+
 This app makes it easy for users to spread the word about meetup events of all kinds they are planning. Gone
 is just about every distraction and what remains are simple forms that allow users to post details about upcoming
 events. The guest list can be stored, the date, time, all the relevant information but nothing more.
