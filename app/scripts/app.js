@@ -19,6 +19,5 @@ angular.module('eventAppApp', [
     'firebase.ref',
     'firebase.auth',
     'uiGmapgoogle-maps',
-    'angucomplete-alt',
     'ui.bootstrap'
   ]);
