@@ -30,8 +30,6 @@ angular.module('eventAppApp')
       if (guest) {
         $scope.newEvent.guests.push(guest);
         $scope.newEvent.guest = '';
-        console.log($scope.newEvent.startDateTime.getTime());
-        console.log($scope.newEvent.endDateTime.getTime());
       }
     };
 
